@@ -14,8 +14,7 @@ public class Timer : MonoBehaviour
     private void Start()
     {
         currTime = time;
-        SetTimer();
-        StartCoroutine(TimePass());
+        StartTimer(12f);
     }
 
     void SetTimer()
@@ -31,5 +30,13 @@ public class Timer : MonoBehaviour
         SetTimer();
         if (currTime > 0)
             StartCoroutine(TimePass());
+    }
+
+    void StartTimer(float value)
+    {
+        time = value;
+        currTime = time;
+        SetTimer();
+        StartCoroutine(TimePass());
     }
 }
