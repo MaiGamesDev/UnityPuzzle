@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: cb9abcf9269b0e444957cc1003d4f0bb
+guid: 96daebd79c9c8c940916f4023e2234e2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -719300117206278127
-    second: "01.\uBC18\uACE0\uD750_\uD574\uBC14\uB77C\uAE30_0"
+      213: -1658909368154940825
+    second: 19. Thomas Cole_New England Scenery_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "01.\uBC18\uACE0\uD750_\uD574\uBC14\uB77C\uAE30_0"
+      name: 19. Thomas Cole_New England Scenery_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 110e50bba588406f0800000000000000
-      internalID: -719300117206278127
+      spriteID: 76a9e8c08be5af8e0800000000000000
+      internalID: -1658909368154940825
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "01.\uBC18\uACE0\uD750_\uD574\uBC14\uB77C\uAE30_0": -719300117206278127
+      19. Thomas Cole_New England Scenery_0: -1658909368154940825
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

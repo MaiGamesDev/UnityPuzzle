@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: cb9abcf9269b0e444957cc1003d4f0bb
+guid: 8425384705d69e342bbb134ea2572aa5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -719300117206278127
-    second: "01.\uBC18\uACE0\uD750_\uD574\uBC14\uB77C\uAE30_0"
+      213: 1762410873812079741
+    second: 17. Sandro Botticelli_Virgin and Child with an Angel_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "01.\uBC18\uACE0\uD750_\uD574\uBC14\uB77C\uAE30_0"
+      name: 17. Sandro Botticelli_Virgin and Child with an Angel_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 110e50bba588406f0800000000000000
-      internalID: -719300117206278127
+      spriteID: d74dad12a57557810800000000000000
+      internalID: 1762410873812079741
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "01.\uBC18\uACE0\uD750_\uD574\uBC14\uB77C\uAE30_0": -719300117206278127
+      17. Sandro Botticelli_Virgin and Child with an Angel_0: 1762410873812079741
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

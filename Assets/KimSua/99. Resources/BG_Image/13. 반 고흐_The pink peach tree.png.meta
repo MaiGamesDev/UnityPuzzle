@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: cb9abcf9269b0e444957cc1003d4f0bb
+guid: 771a501eafc1c7b4bafcd5a56c48dbde
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -719300117206278127
-    second: "01.\uBC18\uACE0\uD750_\uD574\uBC14\uB77C\uAE30_0"
+      213: -294436246540505928
+    second: "13. \uBC18 \uACE0\uD750_The pink peach tree_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "01.\uBC18\uACE0\uD750_\uD574\uBC14\uB77C\uAE30_0"
+      name: "13. \uBC18 \uACE0\uD750_The pink peach tree_0"
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 110e50bba588406f0800000000000000
-      internalID: -719300117206278127
+      spriteID: 8bc24f33bc3f9ebf0800000000000000
+      internalID: -294436246540505928
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "01.\uBC18\uACE0\uD750_\uD574\uBC14\uB77C\uAE30_0": -719300117206278127
+      "13. \uBC18 \uACE0\uD750_The pink peach tree_0": -294436246540505928
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

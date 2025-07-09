@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: cb9abcf9269b0e444957cc1003d4f0bb
+guid: 383641f920eb94d47a9222f470f85cdb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -719300117206278127
-    second: "01.\uBC18\uACE0\uD750_\uD574\uBC14\uB77C\uAE30_0"
+      213: 145012425284308076
+    second: 16. David Teniers_The Guardgouse_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "01.\uBC18\uACE0\uD750_\uD574\uBC14\uB77C\uAE30_0"
+      name: 16. David Teniers_The Guardgouse_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 110e50bba588406f0800000000000000
-      internalID: -719300117206278127
+      spriteID: c6cc6115800330200800000000000000
+      internalID: 145012425284308076
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "01.\uBC18\uACE0\uD750_\uD574\uBC14\uB77C\uAE30_0": -719300117206278127
+      16. David Teniers_The Guardgouse_0: 145012425284308076
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
