@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,8 +9,10 @@ public class Timer : MonoBehaviour
     public float time = 30;
     private float currTime = 0;
 
+    private bool isTimeout = false;
+
     public Image timeLeft;
-    public TextMeshProUGUI timeText;
+    public UIManager manager;
 
     private void Start()
     {
@@ -17,26 +20,40 @@ public class Timer : MonoBehaviour
         StartTimer(12f);
     }
 
+    private void Update()
+    {
+        TimePass();
+    }
+
     void SetTimer()
     {
         timeLeft.fillAmount = currTime / time;
-        timeText.text = currTime.ToString();
-    }    
+    }
 
-    IEnumerator TimePass()
+    void TimePass()
     {
-        yield return new WaitForSeconds(1f);
-        currTime -= 1f;
+        if (currTime <= 0)
+        { 
+            if (!isTimeout)
+            {
+                isTimeout = true;
+                TimeEnd();
+            }
+            return;
+        }
+        currTime -= Time.deltaTime;
         SetTimer();
-        if (currTime > 0)
-            StartCoroutine(TimePass());
     }
 
     void StartTimer(float value)
     {
+        isTimeout = false;
         time = value;
         currTime = time;
         SetTimer();
-        StartCoroutine(TimePass());
     }
+    void TimeEnd()
+    {
+        manager.Gameover();
+    }    
 }
