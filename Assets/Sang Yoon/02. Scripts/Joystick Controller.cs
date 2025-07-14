@@ -1,59 +1,60 @@
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class JoystickController : MonoBehaviour
+/// <summary>
+/// 현제 스크립트는 투명한 배경의 UI의 컴포넌트로 사용되어있음
+/// </summary>
+public class JoystickController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
+    public GameObject puzzlePieces;
+    public Transform parentTransform;
+
     public RectTransform joystickHandel;
     public Vector2 touchPos;
+    public Vector2 localPoint;
+    public Vector2 puzzlePos;
+
+    public float moveSpeed = 10f;
 
     public bool isTouch = true;
 
-
-    void Joystick()
+    private void Start()
     {
-
+        joystickHandel.gameObject.SetActive(false);
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    public void OnPointerDown(PointerEventData eventData) // 터치했을 때
     {
-        if (isTouch)
+        localPoint = eventData.position;
+        joystickHandel.position = localPoint;
+        touchPos = localPoint;
+        joystickHandel.gameObject.SetActive(true);
+
+        if (puzzlePieces != null)
         {
-            Debug.Log("터치 발생");
-
-            joystickHandel.gameObject.SetActive(true);
-            eventData.position = joystickHandel.position;
-            touchPos = eventData.position;
-
-            Debug.Log("터치 끝");
+            puzzlePos = puzzlePieces.transform.position;
         }
     }
 
-    public void OnDrag(PointerEventData eventData)
+    public void OnDrag(PointerEventData eventData) // 터치해서 드래그 했을 때
     {
-        Debug.Log("드래그 발생");
-
         joystickHandel.position = eventData.position;
         touchPos = eventData.position;
 
-        isTouch = false;
+        if (puzzlePieces != null)
+        {
+            Debug.Log(2);
+            Vector2 dragOffset = eventData.position - localPoint;
 
-        Debug.Log("드래그 끝");
+            puzzlePieces.transform.position = puzzlePos + dragOffset * moveSpeed;
+        }
     }
 
-    public void OnPointerUp(PointerEventData eventData)
+    public void OnPointerUp(PointerEventData eventData) // 손을 폰에서 떼었을 때
     {
-        if (!isTouch)
-        {
-            Debug.Log("터치 업 발생");
-
-
-            joystickHandel.position = Vector2.zero;
-            joystickHandel.gameObject.SetActive(false);
-
-            isTouch = true;
-
-            Debug.Log("터치 업 끝");
-
-        }
+        joystickHandel.position = Vector2.zero;
+        joystickHandel.gameObject.SetActive(false);
     }
 }

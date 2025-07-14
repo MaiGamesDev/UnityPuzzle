@@ -43,9 +43,4 @@ public class PuzzleController : MonoBehaviour
         blackPiece.transform.position = emptyArea;
         blackPiece.SetActive(true);
     }
-    void GuessPuzzle()
-    {
-    }
 }
-
-
