@@ -156,41 +156,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &185258136
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 185258137}
-  m_Layer: 5
-  m_Name: '[Group] Puzzle'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &185258137
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 185258136}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 380292516}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &211137014
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,7 +356,6 @@ RectTransform:
   m_Children:
   - {fileID: 1619829539}
   - {fileID: 1224488793}
-  - {fileID: 185258137}
   - {fileID: 1988541421}
   - {fileID: 691554986}
   m_Father: {fileID: 0}
@@ -1566,7 +1530,7 @@ MonoBehaviour:
   - {fileID: 677890805424308031, guid: 9109c176d75d68841a22dc489a0d9031, type: 3}
   - {fileID: 5975084813101966905, guid: 5cbad25e5bef81544a067965277a0d5e, type: 3}
   - {fileID: 7152847596583056510, guid: f205011dea461d14da81d83abfe7b122, type: 3}
-  puzzleParent: {fileID: 185258137}
+  puzzleParent: {fileID: 0}
 --- !u!4 &1534140033
 Transform:
   m_ObjectHideFlags: 0
@@ -1840,7 +1804,8 @@ MonoBehaviour:
   - {fileID: 677890805424308031, guid: 9109c176d75d68841a22dc489a0d9031, type: 3}
   - {fileID: 5975084813101966905, guid: 5cbad25e5bef81544a067965277a0d5e, type: 3}
   - {fileID: 7152847596583056510, guid: f205011dea461d14da81d83abfe7b122, type: 3}
-  puzzleParent: {fileID: 185258137}
+  puzzleParent: {fileID: 1224488793}
+  puzzleArea: {fileID: 1224488793}
 --- !u!4 &1986572681
 Transform:
   m_ObjectHideFlags: 0
