@@ -5,7 +5,6 @@ public class SoundManager : MonoBehaviour
 {
     private static SoundManager instance;
 
-
     public static SoundManager Instance
     {
         get
@@ -29,10 +28,12 @@ public class SoundManager : MonoBehaviour
     }
 
     public AudioSource audioSource;
+    public AudioClip audioMain;
 
     private void Start()
     {
         audioSource.volume = 0.5f;
+        PlayLoopSound(audioMain);
     }
 
     public void PlaySound(AudioClip clip)
