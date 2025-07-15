@@ -8,6 +8,31 @@ using UnityEngine.EventSystems;
 /// </summary>
 public class JoystickController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
+    //private Vector2 offset;
+    //private bool isDragging = false;
+
+    //public void OnPointerDown(PointerEventData eventData)
+    //{
+    //    Vector2 mousePos = Camera.main.ScreenToWorldPoint(eventData.position);
+    //    offset = (Vector2)transform.position - mousePos;
+    //    isDragging = true;
+    //}
+
+    //public void OnDrag(PointerEventData eventData)
+    //{
+    //    if(!isDragging) return;
+
+    //    Vector2 mousePos = Camera.main.ScreenToWorldPoint(eventData.position);
+    //    transform.position = mousePos + offset;
+    //}
+
+    //public void OnPointerUp(PointerEventData eventData)
+    //{
+    //    isDragging = false;
+    //}
+
+
+
     public GameObject puzzlePieces;
     public Transform parentTransform;
 
@@ -27,6 +52,8 @@ public class JoystickController : MonoBehaviour, IPointerDownHandler, IPointerUp
 
     public void OnPointerDown(PointerEventData eventData) // 터치했을 때
     {
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(eventData.position);
+
         localPoint = eventData.position;
         joystickHandel.position = localPoint;
         touchPos = localPoint;
@@ -45,7 +72,6 @@ public class JoystickController : MonoBehaviour, IPointerDownHandler, IPointerUp
 
         if (puzzlePieces != null)
         {
-            Debug.Log(2);
             Vector2 dragOffset = eventData.position - localPoint;
 
             puzzlePieces.transform.position = puzzlePos + dragOffset * moveSpeed;

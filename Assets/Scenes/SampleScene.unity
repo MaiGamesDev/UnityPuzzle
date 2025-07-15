@@ -469,7 +469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7686275, g: 0.7686275, b: 0.7686275, a: 1}
+  m_Color: {r: 0.7686275, g: 0.7686275, b: 0.7686275, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -678,13 +678,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeb5046780030404ebf2babc544e7d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzlePieces: {fileID: 1709247996}
+  puzzlePieces: {fileID: 0}
   parentTransform: {fileID: 0}
-  joystickHandel: {fileID: 656335587}
+  joystickHandel: {fileID: 0}
   touchPos: {x: 0, y: 0}
   localPoint: {x: 0, y: 0}
   puzzlePos: {x: 0, y: 0}
-  moveSpeed: 0.0078
+  moveSpeed: 10
   isTouch: 1
 --- !u!114 &1465858338
 MonoBehaviour:
@@ -735,7 +735,8 @@ GameObject:
   - component: {fileID: 1709247998}
   - component: {fileID: 1709247997}
   - component: {fileID: 1709247999}
-  m_Layer: 0
+  - component: {fileID: 1709248000}
+  m_Layer: 6
   m_Name: "\uD37C\uC99015\uD53C\uC2A4_\uC0AC\uC774\uC988\uC870\uC808_0"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -826,12 +827,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puzzlePieces: {fileID: 0}
   parentTransform: {fileID: 0}
-  joystickHandel: {fileID: 656335587}
+  joystickHandel: {fileID: 0}
   touchPos: {x: 0, y: 0}
   localPoint: {x: 0, y: 0}
   puzzlePos: {x: 0, y: 0}
-  moveSpeed: 0.078
+  moveSpeed: 10
   isTouch: 1
+--- !u!58 &1709248000
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709247996}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.54
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
