@@ -10,6 +10,8 @@ public class UIManager : MonoBehaviour
     public AudioClip audioGameStart;
     public AudioClip audioGameOver;
 
+    private bool isStart = false;
+
     private void Start()
     {
         ResetCanvas();
@@ -25,9 +27,13 @@ public class UIManager : MonoBehaviour
     }
     void ScreenTouched()
     {
-        SoundManager.Instance.PlaySound(audioGameStart);
-        ResetCanvas();
-        canvas.SetActive(true);
+        if (!isStart)
+        { 
+            SoundManager.Instance.PlaySound(audioGameStart);
+            ResetCanvas();
+            canvas.SetActive(true);
+            isStart = true;
+        }
     }
 
     public void Restart()
