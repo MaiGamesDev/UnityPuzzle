@@ -6,14 +6,20 @@ using UnityEngine.UI;
 public class PuzzleExample : MonoBehaviour
 {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     public GameObject[] bgImagePrefab; // ¸íÈ­ ÇÁ¸®ÆÕ
     public GameObject[] puzzlePrefab; // ÆÛÁñ ÇÁ¸®ÆÕ
     [SerializeField] private Transform puzzleParent; // º¸±â 4°³ ¹èÄ¡ÇÒ ºÎ¸ð
 =======
+=======
+>>>>>>> Stashed changes
     public Image bgImage; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½
     public GameObject[] puzzlePrefab; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     [SerializeField] private Transform puzzleParent; // ï¿½ï¿½ï¿½ï¿½ 4ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Î¸ï¿½
     [SerializeField] private RectTransform puzzleArea; // ï¿½ï¿½ï¿½ï¿½ 4ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
     private int gridX = 5;
@@ -40,7 +46,11 @@ public class PuzzleExample : MonoBehaviour
 
     /// <summary>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     ///  (Á¤´ä Æ÷ÇÔ)·£´ý 4°³ À§Ä¡ ¼±ÅÃ
+=======
+    ///  ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 4ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½
+>>>>>>> Stashed changes
 =======
     ///  ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 4ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½
 >>>>>>> Stashed changes
@@ -136,7 +146,11 @@ public class PuzzleExample : MonoBehaviour
     void ExPuzzleInst()
     {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         // ÆÛÁñ ÃÊ±âÈ­
+=======
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+>>>>>>> Stashed changes
 =======
         // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 >>>>>>> Stashed changes
@@ -145,6 +159,7 @@ public class PuzzleExample : MonoBehaviour
             Destroy(child.gameObject);
         }
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
         // ·£´ý ¸íÈ­ 1°³ ¼±ÅÃ
         GameObject bgRandom = bgImagePrefab[Random.Range(0, bgImagePrefab.Length)];
@@ -171,6 +186,14 @@ public class PuzzleExample : MonoBehaviour
             Vector2 pos;
             if (i == correctIndex)
 =======
+=======
+        // 15ï¿½ï¿½ ï¿½ï¿½ 4ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        selectedPrefabs = SelectRandomPrefabs();
+
+        // 4ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        for (int i = 0; i < 4; i++)
+        {
+>>>>>>> Stashed changes
             GameObject prefab = selectedPrefabs[i]; // ï¿½ï¿½ï¿½Ãµï¿½ 4ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             GameObject puzzleObj = Instantiate(prefab, puzzleParent);
 
@@ -269,6 +292,7 @@ public class PuzzleExample : MonoBehaviour
             }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             // ÆÛÁñ ¿ÜÇü ÇÁ¸®ÆÕ (Mask¿ë)
             GameObject puzzleObj = Instantiate(selectedPrefabs[i], puzzleParent);
             Image puzzleImg = puzzleObj.GetComponent<Image>();
@@ -280,6 +304,8 @@ public class PuzzleExample : MonoBehaviour
 
             if (img != null)
 =======
+=======
+>>>>>>> Stashed changes
         /* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½âº» ï¿½ç°¢ï¿½ï¿½ ï¿½ï¿½ï¿½)
         for (int x = 0; x < cellWidth; x++)
         {
@@ -301,8 +327,24 @@ public class PuzzleExample : MonoBehaviour
 
 <<<<<<< Updated upstream
             }
+<<<<<<< Updated upstream
         }
 =======
+=======
+        } */
+        newTex.Apply();
+        return Sprite.Create(newTex, new Rect(0, 0, cellWidth, cellHeight), new Vector2(0.5f, 0.5f));
+    }
+
+    void CreateHole()
+    {
+        GameObject correctPrefab = selectedPrefabs[correctIndex];
+        var correctPos = selectedPos[correctIndex];
+
+        Texture2D bgTex = bgImage.sprite.texture;
+        Texture2D newBgTex = new Texture2D(bgTex.width, bgTex.height);
+
+>>>>>>> Stashed changes
         // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         for (int x = 0; x < bgTex.width; x++)
         {
