@@ -21,8 +21,6 @@ public class PuzzleController : MonoBehaviour
 
     private void Awake()
     {
-        blackPiece = GetComponent<GameObject>();
-        candidateTiles = new GameObject[4];
     }
 
     private void Start()
@@ -31,7 +29,7 @@ public class PuzzleController : MonoBehaviour
     }
 
     /// <summary>
-    /// 랜덤한 검은 공간 생겅
+    /// 랜덤한 검은 공간 생성
     /// </summary>
     void RandomEmptyArea() 
     {

@@ -27,9 +27,5 @@ public class PuzzlePieceController : MonoBehaviour, IBeginDragHandler, IDragHand
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (isCorrPiece)
-        {
-
-        }
     }
 }

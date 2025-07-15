@@ -15,7 +15,7 @@ public class TurnButtonController : MonoBehaviour
         RandomPuzzle();
     }
 
-    // Å×½ºÆ®¿ë
+    // ï¿½×½ï¿½Æ®ï¿½ï¿½
     public void RandomPuzzle()
     {
         var randomIndex = Random.Range(0, puzzles.Length);
@@ -24,14 +24,14 @@ public class TurnButtonController : MonoBehaviour
         var createPos = new Vector3(randomX, randomY, 0);
 
         var newTile = Instantiate(puzzles[randomIndex], puzzleParent);
-        Debug.Log($"»ý¼ºµÈ ÆÛÁñ Á¶°¢: {newTile.name}");
+        Debug.Log($"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½: {newTile.name}");
 
         seletedTile = newTile;
     }
 
     public void SelectTile(int index)
     {
-        //  seletedTile = puzzleController.candidateTiles[index]; // º¸±â 4°³¿¡¼­ ÀÎµ¦½º °¡Á®¿È
+        //  seletedTile = puzzleController.candidateTiles[index]; // ï¿½ï¿½ï¿½ï¿½ 4ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 
         // selectedIndex = index;
@@ -42,7 +42,7 @@ public class TurnButtonController : MonoBehaviour
         if (seletedTile != null)
         {
             Debug.Log("Rotate Left");
-            seletedTile.transform.Rotate(0, 0, 90f); // ¹Ý½Ã°è ¹æÇâ
+            seletedTile.transform.Rotate(0, 0, 90f); // ï¿½Ý½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½
         }
             
     }
@@ -52,7 +52,7 @@ public class TurnButtonController : MonoBehaviour
         if (seletedTile != null)
         {
             Debug.Log("Rotate Right");
-            seletedTile.transform.Rotate(0, 0, -90f); // ½Ã°è ¹æÇâ
+            seletedTile.transform.Rotate(0, 0, -90f); // ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½
         }            
     }
 }
