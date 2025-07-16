@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.PlayerSettings;
 
 public class PuzzleExample : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class PuzzleExample : MonoBehaviour
 
     private int correctIndex;
 
-    private List<(int x, int y)> selectedPos = new List<(int x, int y)>(); // 4개(정답1 + 오답3)
+    private List<Vector2> selectedPos = new List<Vector2>(); // 4개(정답1 + 오답3)
 
     // --------------------------------------------------------------------------------------------------------
 
@@ -31,7 +32,7 @@ public class PuzzleExample : MonoBehaviour
     // --------------------------------------------------------------------------------------------------------
 
     /// <summary>
-    ///  (정답 포함)랜덤 4개 위치 선택
+    ///  퍼즐 조각 배치될 랜덤 4개 위치(좌표) 선택
     /// </summary>    
 
     void SelectRandomPos()
@@ -43,15 +44,13 @@ public class PuzzleExample : MonoBehaviour
             int x = Random.Range(0, gridX);
             int y = Random.Range(0, gridY);
 
-            if (!selectedPos.Contains((x, y)))
+            Vector2 pos = new Vector2(x, y);
+
+            if (!selectedPos.Contains(pos))
             {
-                selectedPos.Add((x, y));
+                selectedPos.Add(pos);
             }
         }
-
-        // 정답 인덱스 결정
-        correctIndex = Random.Range(0, 4);
-        Debug.Log($"정답 인덱스 : {correctIndex}");
     }
 
     /// <summary>
@@ -73,30 +72,15 @@ public class PuzzleExample : MonoBehaviour
         return selectedPrefabs;
     }
 
-
     /// <summary>
-    ///  정답 조각 랜덤 위치 & Sprite 생성
-    /// </summary> 
-    Vector2 CorrectPuzzle()
-    {
-        var pos = selectedPos[correctIndex];
-        return new Vector2(pos.x, pos.y);
-    }
-
-    /// <summary>
-    ///  오답 조각 랜덤 위치 크롭
-    /// </summary> 
-    List<Vector2> WrongPuzzles()
-    {
-        List<Vector2> wrongs = new List<Vector2>();
-
-        for (int i = 0; i < selectedPos.Count; i++)
+    ///  퍼즐 초기화
+    /// </summary>
+    void ClearPuzzles()
+    {        
+        foreach (Transform child in puzzleParent)
         {
-            if (i == correctIndex) continue;
-            wrongs.Add(new Vector2(selectedPos[i].x, selectedPos[i].y));
+            Destroy(child.gameObject);
         }
-
-        return wrongs;
     }
 
     /// <summary>
@@ -104,71 +88,84 @@ public class PuzzleExample : MonoBehaviour
     /// </summary>
     void ExPuzzleInst()
     {
-        // 퍼즐 초기화
-        foreach (Transform child in puzzleParent)
-        {
-            Destroy(child.gameObject);
-        }
+        ClearPuzzles();
 
         // 랜덤 명화 1개 선택
         GameObject bgRandom = bgImagePrefab[Random.Range(0, bgImagePrefab.Length)];
 
+        GameObject[] selectedPrefabs = SelectRandomPrefabs();
+        correctIndex = Random.Range(0, 4);
+        Debug.Log($"정답 인덱스 : {correctIndex}");
+
+        LayoutPuzzles(selectedPrefabs, selectedPos, correctIndex, bgRandom);
+    }
+
+    void LayoutPuzzles(GameObject[] prefabs, List<Vector2> posList, int correctIndex, GameObject bgImage)
+    {
+        GameObject[] puzzleObjs = new GameObject[4];
+
+        // 1. 퍼즐 생성 + 전체 폭 측정
+
+        for (int i = 0; i < 4; i++)
+        {
+            GameObject puzzleObj = Instantiate(prefabs[i], puzzleParent);
+            Image puzzleImg = puzzleObj.GetComponent<Image>();
+            puzzleImg.SetNativeSize();
+            puzzleObjs[i] = puzzleObj;
+        }
+
+
+        // 2. 퍼즐 위치 설정 + 자식으로 명화 넣기
+      
+        for (int i = 0; i < 4; i++)
+        {
+            Vector2 puzzlePos;
+            
+            if (i == correctIndex)
+                puzzlePos = posList[correctIndex];
+
+            else
+            {
+                List<Vector2> wrongPos = new List<Vector2>(posList);
+                wrongPos.RemoveAt(correctIndex);
+
+                int wrongIndex = (i < correctIndex) ? i : i -1;
+                puzzlePos = wrongPos[wrongIndex];
+            }
+
+            AddImage(bgImage, puzzleObjs[i].transform, puzzlePos);
+        }
+    }
+
+    void AddImage(GameObject bgPrefab, Transform parent, Vector2 gridPos)
+    {
+        GameObject childImg = Instantiate(bgPrefab);
+        childImg.transform.SetParent(parent, false); // 부모 설정
+        Image img = childImg.GetComponent<Image>();
+        RectTransform bgRect = img.GetComponent<RectTransform>();
+
+        img.raycastTarget = false;
+
+        // 크기 고정 설정
         float fullWidth = 650f;
         float fullHeight = 800f;
         float cellWidth = fullWidth / gridX;
         float cellHeight = fullHeight / gridY;
 
-        // 퍼즐 모양 15개 중 4개 랜덤 선택
-        GameObject[] selectedPrefabs = SelectRandomPrefabs();
+        bgRect.anchorMin = new Vector2(0.5f, 0.5f);
+        bgRect.anchorMax = new Vector2(0.5f, 0.5f);
+        bgRect.pivot = new Vector2(0.5f, 0.5f);
+        bgRect.sizeDelta = new Vector2(fullWidth, fullHeight);
 
-        Vector2 correctPos = CorrectPuzzle(); // 정답 위치
-        List<Vector2> wrongPosList = WrongPuzzles(); // 오답 위치들
 
-        // 4개 퍼즐 생성
-        for (int i = 0; i < 4; i++)
-        {
-            Vector2 pos;
-            if (i == correctIndex)
-            {
-                pos = correctPos;
-            }
-            else
-            {
-                if (i < correctIndex)
-                {
-                    pos = wrongPosList[i];
-                }
-                else
-                {
-                    pos = wrongPosList[i - 1];
-                }
-            }
+        // 명화 중심 = (전체 이미지 - 셀 크기) / 2
+        // 정답,오답으로 자른 이미지가 퍼즐 조각 정중앙에 오도록 상하좌우 이동 계산
+        float totalOffsetX = (fullWidth - cellWidth) / 2f;
+        float totalOffsetY = (fullHeight - cellHeight) / 2f;
 
-            // 퍼즐 외형 프리팹 (Mask용)
-            GameObject puzzleObj = Instantiate(selectedPrefabs[i], puzzleParent);
-            Image puzzleImg = puzzleObj.GetComponent<Image>();
-            puzzleImg.SetNativeSize();
+        float offsetX = totalOffsetX - (gridPos.x * cellWidth);
+        float offsetY = totalOffsetY - (gridPos.y * cellHeight);
+        bgRect.anchoredPosition = new Vector2(offsetX, offsetY);
 
-            GameObject childImg = Instantiate(bgRandom, puzzleObj.transform);
-            Image img = childImg.GetComponent<Image>();
-            RectTransform bgRect = img.GetComponent<RectTransform>();
-
-            if (img != null)
-            {
-                img.raycastTarget = false;
-
-                // 크기 고정 설정
-                bgRect.anchorMin = new Vector2(0.5f, 0.5f);
-                bgRect.anchorMax = new Vector2(0.5f, 0.5f);
-                bgRect.pivot = new Vector2(0.5f, 0.5f);
-                bgRect.sizeDelta = new Vector2(fullWidth, fullHeight);
-
-                // 명화 위치 이동
-                float offsetX = -(cellWidth * (gridX - 1) / 2f) + pos.x * cellWidth;
-                float offsetY = (cellHeight * (gridY - 1) / 2f) + pos.y * cellHeight;
-                bgRect.anchoredPosition = new Vector2(offsetX, offsetY);
-
-            }
-        }
     }
 }
