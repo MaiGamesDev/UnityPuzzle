@@ -166,6 +166,5 @@ public class PuzzleExample : MonoBehaviour
         float offsetX = totalOffsetX - (gridPos.x * cellWidth);
         float offsetY = totalOffsetY - (gridPos.y * cellHeight);
         bgRect.anchoredPosition = new Vector2(offsetX, offsetY);
-
     }
 }

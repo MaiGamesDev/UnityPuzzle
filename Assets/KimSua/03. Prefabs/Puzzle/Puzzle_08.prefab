@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8287747393073586935}
   - component: {fileID: 7808097924696557533}
   - component: {fileID: 7022282722900483787}
+  - component: {fileID: -7869125500321194818}
   m_Layer: 5
   m_Name: Puzzle_08
   m_TagString: Untagged
@@ -89,3 +90,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 1
+--- !u!114 &-7869125500321194818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6571100553615263944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeb5046780030404ebf2babc544e7d70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dragSpeed: 30

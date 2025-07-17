@@ -8,79 +8,49 @@ using UnityEngine.EventSystems;
 /// </summary>
 public class JoystickController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
-    //private Vector2 offset;
-    //private bool isDragging = false;
+    private Vector2 offset;
+    private bool isDragging = false;
+    private RectTransform rectTransform;
+    private Canvas canvas;
 
-    //public void OnPointerDown(PointerEventData eventData)
-    //{
-    //    Vector2 mousePos = Camera.main.ScreenToWorldPoint(eventData.position);
-    //    offset = (Vector2)transform.position - mousePos;
-    //    isDragging = true;
-    //}
-
-    //public void OnDrag(PointerEventData eventData)
-    //{
-    //    if(!isDragging) return;
-
-    //    Vector2 mousePos = Camera.main.ScreenToWorldPoint(eventData.position);
-    //    transform.position = mousePos + offset;
-    //}
-
-    //public void OnPointerUp(PointerEventData eventData)
-    //{
-    //    isDragging = false;
-    //}
-
-
-
-    public GameObject puzzlePieces;
-    public Transform parentTransform;
-
-    public RectTransform joystickHandel;
-    public Vector2 touchPos;
-    public Vector2 localPoint;
-    public Vector2 puzzlePos;
-
-    public float moveSpeed = 10f;
-
-    public bool isTouch = true;
-
-    private void Start()
+    private void Awake()
     {
-        joystickHandel.gameObject.SetActive(false);
+        rectTransform = GetComponent<RectTransform>();
+        canvas = GetComponentInParent<Canvas>();
     }
 
-    public void OnPointerDown(PointerEventData eventData) // 터치했을 때
+    public void OnPointerDown(PointerEventData eventData)
     {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(eventData.position);
 
-        localPoint = eventData.position;
-        joystickHandel.position = localPoint;
-        touchPos = localPoint;
-        joystickHandel.gameObject.SetActive(true);
-
-        if (puzzlePieces != null)
-        {
-            puzzlePos = puzzlePieces.transform.position;
-        }
+        Vector2 mousePos;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle // 월드 좌표를 스크린 좌표계로 변환
+            (
+            rectTransform.parent as RectTransform,
+            eventData.position,
+            canvas.worldCamera,
+            out mousePos
+            );
+        offset = rectTransform.anchoredPosition - mousePos;
+        isDragging = true;
     }
 
-    public void OnDrag(PointerEventData eventData) // 터치해서 드래그 했을 때
+    public void OnDrag(PointerEventData eventData)
     {
-        joystickHandel.position = eventData.position;
-        touchPos = eventData.position;
+        if (!isDragging) return;
 
-        if (puzzlePieces != null)
-        {
-            Vector2 dragOffset = eventData.position - localPoint;
-
-            puzzlePieces.transform.position = puzzlePos + dragOffset * moveSpeed;
-        }
+        Vector2 mousePos;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle // 월드 좌표를 스크린 좌표계로 변환
+            (
+            rectTransform.parent as RectTransform,
+            eventData.position,
+            canvas.worldCamera,
+            out mousePos
+            );
+        rectTransform.anchoredPosition = mousePos + offset;
     }
 
-    public void OnPointerUp(PointerEventData eventData) // 손을 폰에서 떼었을 때
+    public void OnPointerUp(PointerEventData eventData)
     {
-        joystickHandel.position = Vector2.zero;
-        joystickHandel.gameObject.SetActive(false);
+        isDragging = false;
     }
 }
