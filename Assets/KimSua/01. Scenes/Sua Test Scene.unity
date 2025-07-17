@@ -311,6 +311,7 @@ GameObject:
   - component: {fileID: 691554990}
   - component: {fileID: 691554989}
   - component: {fileID: 691554988}
+  - component: {fileID: 691554991}
   m_Layer: 5
   m_Name: LeftTurnButton
   m_TagString: Untagged
@@ -432,6 +433,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 691554985}
   m_CullTransparentMesh: 1
+--- !u!114 &691554991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691554985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 102a139ac8c7af14ba9858ef3434f72f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedTile: {fileID: 0}
 --- !u!1 &914470737
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,7 +779,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1534140032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -778,24 +792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102a139ac8c7af14ba9858ef3434f72f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seletedTile: {fileID: 0}
-  puzzles:
-  - {fileID: 5819017889569782956, guid: 14dc9d9560c7ace4b80f3abf44f8beca, type: 3}
-  - {fileID: 6462715082435867306, guid: d9c6c160b068b454b9dfd1a9fdb8ee8f, type: 3}
-  - {fileID: 5374957318994796769, guid: 1bddfd7311500ba4883d63f2abebdfa4, type: 3}
-  - {fileID: 2909404462533571437, guid: 74766b3731312fe40b82ae84c5c3bc24, type: 3}
-  - {fileID: 5313163868618766158, guid: c1e10497a7cd2a446a007166f08a6aa3, type: 3}
-  - {fileID: 5558086427344190664, guid: 332cdc9c5a26fc84fa647b53ec592847, type: 3}
-  - {fileID: 5921394006436013577, guid: 3f6dffe3b89f2f845bcf223951f9dc68, type: 3}
-  - {fileID: 6571100553615263944, guid: a36cc0ff166c6154380f5f9e599cc074, type: 3}
-  - {fileID: 8953747651940706382, guid: 04a2287ac007e4c4a8f17880c72ce9d4, type: 3}
-  - {fileID: 4218045305187293037, guid: 8ffc4dba2796cb84f9695eec10a80640, type: 3}
-  - {fileID: 6423433427924063239, guid: b79ebb0cb2134b14dad21fef88d12b5e, type: 3}
-  - {fileID: 3685338618766419044, guid: 79edce8f56d7da243812d297757a937f, type: 3}
-  - {fileID: 677890805424308031, guid: 9109c176d75d68841a22dc489a0d9031, type: 3}
-  - {fileID: 5975084813101966905, guid: 5cbad25e5bef81544a067965277a0d5e, type: 3}
-  - {fileID: 7152847596583056510, guid: f205011dea461d14da81d83abfe7b122, type: 3}
-  puzzleParent: {fileID: 0}
+  selectedTile: {fileID: 0}
 --- !u!4 &1534140033
 Transform:
   m_ObjectHideFlags: 0
@@ -1025,6 +1022,12 @@ MonoBehaviour:
   - {fileID: 5975084813101966905, guid: 5cbad25e5bef81544a067965277a0d5e, type: 3}
   - {fileID: 7152847596583056510, guid: f205011dea461d14da81d83abfe7b122, type: 3}
   puzzleParent: {fileID: 1224488793}
+  correctIndex: 0
+  tiles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &1986572681
 Transform:
   m_ObjectHideFlags: 0
@@ -1052,6 +1055,7 @@ GameObject:
   - component: {fileID: 1988541425}
   - component: {fileID: 1988541424}
   - component: {fileID: 1988541423}
+  - component: {fileID: 1988541426}
   m_Layer: 5
   m_Name: RightTurnButton
   m_TagString: Untagged
@@ -1173,6 +1177,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1988541420}
   m_CullTransparentMesh: 1
+--- !u!114 &1988541426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988541420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 102a139ac8c7af14ba9858ef3434f72f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedTile: {fileID: 0}
 --- !u!1 &2009872900
 GameObject:
   m_ObjectHideFlags: 0
