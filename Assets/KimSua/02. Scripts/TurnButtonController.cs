@@ -1,58 +1,42 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TurnButtonController : MonoBehaviour
 {
-    // public PuzzleController puzzleController;
-    public GameObject seletedTile;
-    public GameObject[] puzzles;
-    [SerializeField] private Transform puzzleParent;
+    private PuzzleExample puzzleEx;
+    public GameObject selectedTile;
 
-    private int selectedIndex = 0;
+    [SerializeField] private Button leftButton;
+    [SerializeField] private Button rightButton;
+
+    private enum RotateDir { Left, Right };
+
+    private void Awake()
+    {
+        puzzleEx = FindFirstObjectByType<PuzzleExample>();
+
+        //leftButton.onClick.AddListener(() => Rotate("left"));
+        //rightButton.onClick.AddListener(() => Rotate("right"));
+    }
 
     void Start()
     {
         SelectTile(0);
-        RandomPuzzle();
-    }
-
-    // �׽�Ʈ��
-    public void RandomPuzzle()
-    {
-        var randomIndex = Random.Range(0, puzzles.Length);
-        var randomX = Random.Range(0, 4);
-        var randomY = Random.Range(0, 2);
-        var createPos = new Vector3(randomX, randomY, 0);
-
-        var newTile = Instantiate(puzzles[randomIndex], puzzleParent);
-        Debug.Log($"������ ���� ����: {newTile.name}");
-
-        seletedTile = newTile;
-    }
+    }    
 
     public void SelectTile(int index)
     {
-        //  seletedTile = puzzleController.candidateTiles[index]; // ���� 4������ �ε��� ������
-
-
-        // selectedIndex = index;
+        if (index >= 0 && puzzleEx.tiles != null)
+        {
+            selectedTile = puzzleEx.tiles[index];
+            Debug.Log($"타일{index} 선택됨. 회전 대기.");
+        }               
     }
 
-    public void RotateLeft()
+    private void Rotate(RotateDir dir)
     {
-        if (seletedTile != null)
-        {
-            Debug.Log("Rotate Left");
-            seletedTile.transform.Rotate(0, 0, 90f); // �ݽð� ����
-        }
-            
-    }
-
-    public void RotateRight()
-    {
-        if (seletedTile != null)
-        {
-            Debug.Log("Rotate Right");
-            seletedTile.transform.Rotate(0, 0, -90f); // �ð� ����
-        }            
+        float angle = (dir == RotateDir.Left) ? 90f : -90f;
+        selectedTile.transform.Rotate(0, 0, angle);
+        Debug.Log($"Rotated {dir} 실행");
     }
 }

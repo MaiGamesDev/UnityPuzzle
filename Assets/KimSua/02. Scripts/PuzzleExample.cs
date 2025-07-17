@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,9 +13,15 @@ public class PuzzleExample : MonoBehaviour
     private int gridX = 5;
     private int gridY = 3;
 
-    private int correctIndex;
+    public int correctIndex;
+    public List<int> wrongIndexs = new List<int>();
 
-    private List<Vector2> selectedPos = new List<Vector2>(); // 4개(정답1 + 오답3)
+    public Vector2 correctPos;
+    public List<Vector2> wrongPos = new List<Vector2>();
+
+    private List<Vector2> selectedPos = new List<Vector2>();
+
+    public GameObject[] tiles = new GameObject[4];
 
     // --------------------------------------------------------------------------------------------------------
 
@@ -76,7 +83,7 @@ public class PuzzleExample : MonoBehaviour
     ///  퍼즐 초기화
     /// </summary>
     void ClearPuzzles()
-    {        
+    {
         foreach (Transform child in puzzleParent)
         {
             Destroy(child.gameObject);
@@ -97,6 +104,17 @@ public class PuzzleExample : MonoBehaviour
         correctIndex = Random.Range(0, 4);
         Debug.Log($"정답 인덱스 : {correctIndex}");
 
+        wrongIndexs.Clear();
+        for (int i = 0; i < 4; i++)
+        {
+            if (i != correctIndex) wrongIndexs.Add(i);            
+        }
+
+        Debug.Log($"오답 인덱스 : {string.Join(", ", wrongIndexs)}");
+        correctPos = selectedPos[correctIndex];
+        wrongPos = new List<Vector2>(selectedPos);
+        wrongPos.RemoveAt(correctIndex);
+
         LayoutPuzzles(selectedPrefabs, selectedPos, correctIndex, bgRandom);
     }
 
@@ -112,60 +130,64 @@ public class PuzzleExample : MonoBehaviour
             Image puzzleImg = puzzleObj.GetComponent<Image>();
             puzzleImg.SetNativeSize();
             puzzleObjs[i] = puzzleObj;
+
+            tiles[i] = puzzleObj;
+
+            // 퍼즐 클릭할 수 있도록 스크립트 추가
+            PuzzleSelector pzSelcect = puzzleObj.AddComponent<PuzzleSelector>();
+            pzSelcect.puzzleIndex = i;
         }
 
 
         // 2. 퍼즐 위치 설정 + 자식으로 명화 넣기
-      
+
         for (int i = 0; i < 4; i++)
         {
             Vector2 puzzlePos;
-            
+
             if (i == correctIndex)
                 puzzlePos = posList[correctIndex];
 
             else
             {
-                List<Vector2> wrongPos = new List<Vector2>(posList);
-                wrongPos.RemoveAt(correctIndex);
-
-                int wrongIndex = (i < correctIndex) ? i : i -1;
-                puzzlePos = wrongPos[wrongIndex];
+                int wrongListIndex = (i < correctIndex) ? i : i -1;
+                puzzlePos = wrongPos[wrongListIndex];
             }
 
             AddImage(bgImage, puzzleObjs[i].transform, puzzlePos);
         }
-    }
-
-    void AddImage(GameObject bgPrefab, Transform parent, Vector2 gridPos)
-    {
-        GameObject childImg = Instantiate(bgPrefab);
-        childImg.transform.SetParent(parent, false); // 부모 설정
-        Image img = childImg.GetComponent<Image>();
-        RectTransform bgRect = img.GetComponent<RectTransform>();
-
-        img.raycastTarget = false;
-
-        // 크기 고정 설정
-        float fullWidth = 650f;
-        float fullHeight = 800f;
-        float cellWidth = fullWidth / gridX;
-        float cellHeight = fullHeight / gridY;
-
-        bgRect.anchorMin = new Vector2(0.5f, 0.5f);
-        bgRect.anchorMax = new Vector2(0.5f, 0.5f);
-        bgRect.pivot = new Vector2(0.5f, 0.5f);
-        bgRect.sizeDelta = new Vector2(fullWidth, fullHeight);
 
 
-        // 명화 중심 = (전체 이미지 - 셀 크기) / 2
-        // 정답,오답으로 자른 이미지가 퍼즐 조각 정중앙에 오도록 상하좌우 이동 계산
-        float totalOffsetX = (fullWidth - cellWidth) / 2f;
-        float totalOffsetY = (fullHeight - cellHeight) / 2f;
+        void AddImage(GameObject bgPrefab, Transform parent, Vector2 gridPos)
+        {
+            GameObject childImg = Instantiate(bgPrefab);
+            childImg.transform.SetParent(parent, false); // 부모 설정
+            Image img = childImg.GetComponent<Image>();
+            RectTransform bgRect = img.GetComponent<RectTransform>();
 
-        float offsetX = totalOffsetX - (gridPos.x * cellWidth);
-        float offsetY = totalOffsetY - (gridPos.y * cellHeight);
-        bgRect.anchoredPosition = new Vector2(offsetX, offsetY);
+            img.raycastTarget = false;
 
+            // 크기 고정 설정
+            float fullWidth = 650f;
+            float fullHeight = 800f;
+            float cellWidth = fullWidth / gridX;
+            float cellHeight = fullHeight / gridY;
+
+            bgRect.anchorMin = new Vector2(0.5f, 0.5f);
+            bgRect.anchorMax = new Vector2(0.5f, 0.5f);
+            bgRect.pivot = new Vector2(0.5f, 0.5f);
+            bgRect.sizeDelta = new Vector2(fullWidth, fullHeight);
+
+
+            // 명화 중심 = (전체 이미지 - 셀 크기) / 2
+            // 정답,오답으로 자른 이미지가 퍼즐 조각 정중앙에 오도록 상하좌우 이동 계산
+            float totalOffsetX = (fullWidth - cellWidth) / 2f;
+            float totalOffsetY = (fullHeight - cellHeight) / 2f;
+
+            float offsetX = totalOffsetX - (gridPos.x * cellWidth);
+            float offsetY = totalOffsetY - (gridPos.y * cellHeight);
+            bgRect.anchoredPosition = new Vector2(offsetX, offsetY);
+
+        }
     }
 }
