@@ -51,6 +51,7 @@ public class JoystickController : MonoBehaviour, IPointerDownHandler, IPointerUp
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        if (PuzzleExample.correctIn)
         isDragging = false;
     }
 }
