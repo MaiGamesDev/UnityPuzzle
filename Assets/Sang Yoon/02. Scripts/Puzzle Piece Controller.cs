@@ -13,8 +13,6 @@ public class PuzzlePieceController : MonoBehaviour, IBeginDragHandler, IDragHand
 
     private void Awake()
     {
-        rectTransform = GetComponent<RectTransform>();
-        canvas = GetComponent<Canvas>();
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
