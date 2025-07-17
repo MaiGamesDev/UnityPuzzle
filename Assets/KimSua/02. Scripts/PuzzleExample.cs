@@ -16,6 +16,8 @@ public class PuzzleExample : MonoBehaviour
 
     private List<Vector2> selectedPos = new List<Vector2>(); // 4개(정답1 + 오답3)
 
+    private int number = 10;
+
 
     // 주석
 
