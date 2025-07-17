@@ -23,6 +23,8 @@ public class PuzzleExample : MonoBehaviour
 
     public GameObject[] tiles = new GameObject[4];
 
+    private int number = 10;
+
 
     // 주석
 
