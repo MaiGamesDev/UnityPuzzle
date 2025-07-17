@@ -23,6 +23,9 @@ public class PuzzleExample : MonoBehaviour
 
     public GameObject[] tiles = new GameObject[4];
 
+
+    // 주석
+
     // --------------------------------------------------------------------------------------------------------
 
     void Start()
