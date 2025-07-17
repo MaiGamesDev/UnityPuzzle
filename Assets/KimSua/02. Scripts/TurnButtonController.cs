@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TurnButtonController : MonoBehaviour
 {
@@ -22,7 +21,7 @@ public class TurnButtonController : MonoBehaviour
     void Start()
     {
         SelectTile(0);
-    }    
+    }
 
     public void SelectTile(int index)
     {
@@ -30,7 +29,7 @@ public class TurnButtonController : MonoBehaviour
         {
             selectedTile = puzzleEx.tiles[index];
             Debug.Log($"타일{index} 선택됨. 회전 대기.");
-        }               
+        }
     }
 
     private void Rotate(RotateDir dir)
