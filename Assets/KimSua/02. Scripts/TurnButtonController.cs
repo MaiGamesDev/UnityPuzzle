@@ -1,41 +1,59 @@
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 
 public class TurnButtonController : MonoBehaviour
 {
     private PuzzleExample puzzleEx;
     public GameObject selectedTile;
 
-    [SerializeField] private Button leftButton;
-    [SerializeField] private Button rightButton;
-
-    private enum RotateDir { Left, Right };
+    private Vector3 defaultScale = Vector3.one;
 
     private void Awake()
     {
         puzzleEx = FindFirstObjectByType<PuzzleExample>();
-
-        //leftButton.onClick.AddListener(() => Rotate("left"));
-        //rightButton.onClick.AddListener(() => Rotate("right"));
-    }
-
-    void Start()
-    {
-        SelectTile(0);
     }
 
     public void SelectTile(int index)
     {
-        if (index >= 0 && puzzleEx.tiles != null)
+        if (index < 0 || puzzleEx.tiles == null)
+            return;
+        
+        // 이전 선택 퍼즐은 원래 크기로
+        foreach (GameObject tile in puzzleEx.tiles)
         {
-            selectedTile = puzzleEx.tiles[index];
-            Debug.Log($"타일{index} 선택됨. 회전 대기.");
+            tile.transform.localScale = defaultScale;
         }
+
+        selectedTile = puzzleEx.tiles[index];
+
+        // 선택 퍼즐 확대
+        selectedTile.transform.localScale = defaultScale * 1.1f;
+
+        Debug.Log($"타일{index} 선택됨. 회전 대기.");
     }
 
-    private void Rotate(RotateDir dir)
+    public void RotateLeft()
     {
-        float angle = (dir == RotateDir.Left) ? 90f : -90f;
-        selectedTile.transform.Rotate(0, 0, angle);
-        Debug.Log($"Rotated {dir} 실행");
+        if (selectedTile == null)
+        {
+            Debug.LogWarning("회전할 타일이 선택되지 않았습니다.");
+            return;
+        }
+
+        selectedTile.transform.Rotate(0, 0, 90f);
+        Debug.Log("왼쪽으로 회전");
+    }
+
+    public void RotateRight()
+    {
+        if (selectedTile == null)
+        {
+            Debug.LogWarning("회전할 타일이 선택되지 않았습니다.");
+            return;
+        }
+
+        selectedTile.transform.Rotate(0, 0, -90f);
+        Debug.Log("오른쪽으로 회전");
     }
 }
