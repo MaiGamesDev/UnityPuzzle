@@ -26,7 +26,7 @@ public class TurnButtonController : MonoBehaviour
     {
         if (index < 0 || puzzleEx.tiles == null)
             return;
-        
+
         // 이전 선택 퍼즐은 원래 크기로
         foreach (GameObject tile in puzzleEx.tiles)
         {
@@ -53,15 +53,15 @@ public class TurnButtonController : MonoBehaviour
         Debug.Log("왼쪽으로 회전");
     }
 
-    //public void RotateRight()
-    //{
-    //    if (selectedTile == null)
-    //    {
-    //        Debug.LogWarning("회전할 타일이 선택되지 않았습니다.");
-    //        return;
-    //    }
+    public void RotateRight()
+    {
+        if (selectedTile == null)
+        {
+            Debug.LogWarning("회전할 타일이 선택되지 않았습니다.");
+            return;
+        }
 
-    //    selectedTile.transform.Rotate(0, 0, -90f);
-    //    Debug.Log("오른쪽으로 회전");
-    //}
+        selectedTile.transform.Rotate(0, 0, -90f);
+        Debug.Log("오른쪽으로 회전");
+    }
 }
