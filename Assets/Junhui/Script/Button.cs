@@ -3,6 +3,8 @@ using UnityEngine;
 public class Button : MonoBehaviour
 {
     public AudioClip audioPressed;
+    internal object onClick;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

@@ -6,12 +6,20 @@ public class TurnButtonController : MonoBehaviour
 {
     private PuzzleExample puzzleEx;
     public GameObject selectedTile;
+    public GameObject rTurnButton;
+    public GameObject lTurnButton;
 
+    public Vector3 puzzleRightTurn;
+    public Vector3 puzzleLeftTurn;
     private Vector3 defaultScale = Vector3.one;
 
     private void Awake()
     {
         puzzleEx = FindFirstObjectByType<PuzzleExample>();
+    }
+
+    private void Start()
+    {
     }
 
     public void SelectTile(int index)
@@ -45,15 +53,15 @@ public class TurnButtonController : MonoBehaviour
         Debug.Log("왼쪽으로 회전");
     }
 
-    public void RotateRight()
-    {
-        if (selectedTile == null)
-        {
-            Debug.LogWarning("회전할 타일이 선택되지 않았습니다.");
-            return;
-        }
+    //public void RotateRight()
+    //{
+    //    if (selectedTile == null)
+    //    {
+    //        Debug.LogWarning("회전할 타일이 선택되지 않았습니다.");
+    //        return;
+    //    }
 
-        selectedTile.transform.Rotate(0, 0, -90f);
-        Debug.Log("오른쪽으로 회전");
-    }
+    //    selectedTile.transform.Rotate(0, 0, -90f);
+    //    Debug.Log("오른쪽으로 회전");
+    //}
 }

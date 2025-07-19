@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 /// <summary>
-/// 현제 스크립트는 투명한 배경의 UI의 컴포넌트로 사용되어있음
+/// 현제 스크립트는 검정 퍼즐조각 프리팹 15개에 사용되어있음
 /// </summary>
+
 public class JoystickController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
     private Vector2 offset;
