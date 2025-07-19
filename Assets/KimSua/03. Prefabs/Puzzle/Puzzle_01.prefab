@@ -100,7 +100,6 @@ GameObject:
   - component: {fileID: 1788447846700072594}
   - component: {fileID: -8518443892625561619}
   - component: {fileID: 2256214701755199295}
-  - component: {fileID: -578085770208168047}
   m_Layer: 5
   m_Name: Puzzle_01
   m_TagString: Untagged
@@ -191,16 +190,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeb5046780030404ebf2babc544e7d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-578085770208168047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5819017889569782956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 977136c0a8c18ec4ba629337718dbc1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedTile: {fileID: 0}
