@@ -29,6 +29,8 @@ public class PuzzleExample : MonoBehaviour
     public GameObject[] tiles;
     public BgImageController bgController;
 
+    public RectTransform puzzleHoleRT;
+
     // --------------------------------------------------------------------------------------------------------
 
     void Start()
@@ -177,6 +179,8 @@ public class PuzzleExample : MonoBehaviour
         puzzleImg.raycastTarget = false;
 
         SetRectTransform(puzzleImg.rectTransform, gridPos, fullWidth, fullHeight);
+
+        puzzleHoleRT = puzzleObj.GetComponent<RectTransform>();
     }
 
     void SetRectTransform(RectTransform rect, Vector2 gridPos, float fullW, float fullH)
