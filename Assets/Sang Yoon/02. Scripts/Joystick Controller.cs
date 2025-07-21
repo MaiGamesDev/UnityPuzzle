@@ -14,15 +14,22 @@ public class JoystickController : MonoBehaviour, IPointerDownHandler, IPointerUp
     private RectTransform rectTransform;
     private Canvas canvas;
 
+    public RectTransform puzzleHole;
+    private GameObject[] correctPiece;
+
     private void Awake()
     {
+        puzzleHole = GetComponent<RectTransform>();
         rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
     }
 
+    private void Start()
+    {
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
-
         Vector2 mousePos;
         RectTransformUtility.ScreenPointToLocalPointInRectangle // 월드 좌표를 스크린 좌표계로 변환
             (
@@ -52,6 +59,14 @@ public class JoystickController : MonoBehaviour, IPointerDownHandler, IPointerUp
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        isDragging = false;
+        if (RectTransformUtility.RectangleContainsScreenPoint(puzzleHole, eventData.position, eventData.pressEventCamera))
+        {
+            
+        }
+        else
+        {
+
+        }
+            isDragging = false;
     }
 }
