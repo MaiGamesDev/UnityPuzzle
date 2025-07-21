@@ -1116,7 +1116,7 @@ MonoBehaviour:
   - {fileID: 7152847596583056510, guid: f205011dea461d14da81d83abfe7b122, type: 3}
   puzzleParent: {fileID: 1224488793}
   correctIndex: 0
-  wrongIndexs: 
+  wrongTiles: []
   correctPos: {x: 0, y: 0}
   wrongPos: []
   tiles:

@@ -20,29 +20,27 @@ public class PuzzleExample : MonoBehaviour
     float cellHeight;
 
     public int correctIndex;
-    public List<int> wrongIndexs = new List<int>();
+    public List<GameObject> wrongTiles = new List<GameObject>();
 
     public Vector2 correctPos;
     public List<Vector2> wrongPos = new List<Vector2>();
-
     private List<Vector2> selectedPos = new List<Vector2>();
 
-    public GameObject[] tiles = new GameObject[4];
-
+    public GameObject[] tiles;
     public BgImageController bgController;
 
     // --------------------------------------------------------------------------------------------------------
 
     void Start()
     {
+        tiles = new GameObject[4];
         cellWidth = fullWidth / gridX;
         cellHeight = fullHeight / gridY;
         PuzzleOptions();
     }
 
-    void PuzzleOptions()
+    public void PuzzleOptions()
     {
-        SelectRandomPos();
         ExPuzzleInst();
     }
 
@@ -54,8 +52,6 @@ public class PuzzleExample : MonoBehaviour
 
     void SelectRandomPos()
     {
-        selectedPos.Clear();
-
         while (selectedPos.Count < 4)
         {
             int x = Random.Range(0, gridX);
@@ -63,30 +59,18 @@ public class PuzzleExample : MonoBehaviour
 
             Vector2 pos = new Vector2(x, y);
 
-            if (!selectedPos.Contains(pos))
-            {
-                selectedPos.Add(pos);
-            }
+            selectedPos.Add(pos);
         }
     }
 
     /// <summary>
-    ///  15개 프리팹 중 랜덤 선택
+    ///  15개 프리팹 중 랜덤 1개 선택
     /// </summary>  
 
-    GameObject[] SelectRandomPrefabs()
+    GameObject SelectRandomPrefabs()
     {
-        List<GameObject> prefabs = new List<GameObject>(puzzlePrefab);
-        GameObject[] selectedPrefabs = new GameObject[4];
-
-        for (int i = 0; i < 4; i++)
-        {
-            int randomIndex = Random.Range(0, prefabs.Count);
-            selectedPrefabs[i] = prefabs[randomIndex];
-            prefabs.RemoveAt(randomIndex); // 중복 방지 (겹치는 인덱스는 제거)
-        }
-
-        return selectedPrefabs;
+        int index = Random.Range(0, puzzlePrefab.Length);
+        return puzzlePrefab[index];
     }
 
     /// <summary>
@@ -98,6 +82,8 @@ public class PuzzleExample : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+
+        wrongTiles.Clear();
     }
 
     /// <summary>
@@ -107,6 +93,9 @@ public class PuzzleExample : MonoBehaviour
     {
         ClearPuzzles();
 
+        List<Vector2> allPos = new List<Vector2>();
+        SelectRandomPos();
+
         // 랜덤 명화 1개 선택
         GameObject bgRandom = bgImagePrefab[Random.Range(0, bgImagePrefab.Length)];
 
@@ -115,81 +104,57 @@ public class PuzzleExample : MonoBehaviour
             bgController.UpdateBg(bgRandom);
         }
 
-        // 정답
-        GameObject[] selectedPrefabs = SelectRandomPrefabs();
-        correctIndex = Random.Range(0, 4);
+        GameObject selectedPrefabs = SelectRandomPrefabs();
+
+        // 정답 인덱스 선택
+        this.correctIndex = Random.Range(0, 4);
         correctPos = selectedPos[correctIndex];
-        Debug.Log($"정답 인덱스 : {correctIndex}");
+        Debug.Log($"이번 퍼즐의 정답 슬롯 : {this.correctIndex + 1}번");
 
-        // 정답 퍼즐 홀 생성
-        CreatePuzzleHole(selectedPrefabs[correctIndex], correctPos);
-
-        // 오답
-        wrongIndexs.Clear();
+        wrongPos.Clear();
         for (int i = 0; i < 4; i++)
         {
-            if (i != correctIndex) wrongIndexs.Add(i);
+            if (i != correctIndex)
+                wrongPos.Add(selectedPos[i]);
         }
 
-        Debug.Log($"오답 인덱스 : {string.Join(", ", wrongIndexs)}");
-        wrongPos = new List<Vector2>(selectedPos);
-        wrongPos.RemoveAt(correctIndex);
+        CreatePuzzleHole(selectedPrefabs, correctPos);
 
         // 보기 퍼즐 4개 생성
-        LayoutPuzzles(selectedPrefabs, selectedPos, correctIndex, bgRandom);
+        LayoutPuzzles(selectedPrefabs, correctIndex, correctPos, wrongPos, bgRandom);
     }
 
-    void LayoutPuzzles(GameObject[] prefabs, List<Vector2> posList, int correctIndex, GameObject bgImage)
+    void LayoutPuzzles(GameObject prefabs, int correctIndex, Vector2 correctPos, List<Vector2> wrongPos, GameObject bgImage)
     {
-        GameObject[] puzzleObjs = new GameObject[4];
-
-        // 1. 퍼즐 생성 + 전체 폭 측정
+        wrongTiles.Clear();
 
         for (int i = 0; i < 4; i++)
         {
-            GameObject puzzleObj = Instantiate(prefabs[i], puzzleParent);
+            GameObject puzzleObj = Instantiate(prefabs, puzzleParent);
             Image puzzleImg = puzzleObj.GetComponent<Image>();
             puzzleImg.SetNativeSize();
-            puzzleObjs[i] = puzzleObj;
-
             tiles[i] = puzzleObj;
 
             // 퍼즐 클릭할 수 있도록 스크립트 추가
             PuzzleSelector pzSelcect = puzzleObj.AddComponent<PuzzleSelector>();
             pzSelcect.puzzleIndex = i;
 
-            // 랜덤 회전 적용
-            float randomAngle = 90f * Random.Range(0, 4);
-            puzzleObj.transform.rotation = Quaternion.Euler(0f, 0f, randomAngle);
-        }
+           Vector2 gridPos = (i == correctIndex) ? correctPos : wrongPos[i];
+            SetPuzzlePiece(puzzleObj.transform, bgImage, gridPos);
 
-
-        // 2. 퍼즐 위치 설정 + 자식으로 명화 넣기
-
-        for (int i = 0; i < 4; i++)
-        {
-            Vector2 puzzlePos;
-
-            if (i == correctIndex)
-                puzzlePos = posList[correctIndex];
-
-            else
-            {
-                int wrongListIndex = (i < correctIndex) ? i : i - 1;
-                puzzlePos = wrongPos[wrongListIndex];
-            }
-
-            AddBgImage(bgImage, puzzleObjs[i].transform, puzzlePos);
+            if (i != correctIndex)
+                wrongTiles.Add(puzzleObj);
         }
     }
 
     /// <summary>
-    /// 퍼즐 조각에 명화 이미지 자식으로 붙이기
+    /// 명화 이미지 받아와 퍼즐 배치
     /// </summary>
-    void AddBgImage(GameObject bgPrefab, Transform parent, Vector2 gridPos)
+
+    void SetPuzzlePiece(Transform puzzleTransform, GameObject bgImage, Vector2 gridPos)
     {
-        GameObject childImg = Instantiate(bgPrefab);
-        childImg.transform.SetParent(parent, false); // 부모 설정
+        GameObject childImg = Instantiate(bgImage);
+        childImg.transform.SetParent(puzzleTransform, false); // 부모 설정
 
         Image img = childImg.GetComponent<Image>();
         img.raycastTarget = false;
