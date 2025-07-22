@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 123246359}
   - component: {fileID: 123246361}
   m_Layer: 5
-  m_Name: TestBG
+  m_Name: bgController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -725,7 +725,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 298.99997}
+  m_AnchoredPosition: {x: 0, y: 298.99994}
   m_SizeDelta: {x: 644.26, y: 179.47162}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1224488794
@@ -1116,7 +1116,7 @@ MonoBehaviour:
   - {fileID: 7152847596583056510, guid: f205011dea461d14da81d83abfe7b122, type: 3}
   puzzleParent: {fileID: 1224488793}
   correctIndex: 0
-  wrongTiles: []
+  wrongIndexs: 
   correctPos: {x: 0, y: 0}
   wrongPos: []
   tiles:
@@ -1125,6 +1125,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   bgController: {fileID: 123246361}
+  puzzleHoleRT: {fileID: 0}
 --- !u!4 &1986572681
 Transform:
   m_ObjectHideFlags: 0
