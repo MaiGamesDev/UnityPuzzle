@@ -14,12 +14,11 @@ public class JoystickController : MonoBehaviour, IPointerDownHandler, IPointerUp
     private RectTransform rectTransform;
     private Canvas canvas;
 
-    public RectTransform puzzleHole;
-    private GameObject[] correctPiece;
+    public PuzzleExample puzzleEx;
 
     private void Awake()
     {
-        puzzleHole = GetComponent<RectTransform>();
+        puzzleEx = GetComponent<PuzzleExample>();
         rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
     }
@@ -59,7 +58,7 @@ public class JoystickController : MonoBehaviour, IPointerDownHandler, IPointerUp
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (RectTransformUtility.RectangleContainsScreenPoint(puzzleHole, eventData.position, eventData.pressEventCamera))
+        if (IsRectOverlapping(puzzleEx.puzzleHoleRT, rectTransform))
         {
             
         }
@@ -67,6 +66,32 @@ public class JoystickController : MonoBehaviour, IPointerDownHandler, IPointerUp
         {
 
         }
-            isDragging = false;
+        isDragging = false;
+    }
+
+    public bool IsRectOverlapping(RectTransform rt1, RectTransform rt2)
+    {
+        Vector3[] corner1 = new Vector3[4];
+        Vector3[] corner2 = new Vector3[4];
+        rt1.GetWorldCorners(corner1);
+        rt2.GetWorldCorners(corner2);
+
+        float rt1_minX = corner1[0].x;
+        float rt1_maxX = corner1[2].x;
+        float rt1_minY = corner1[0].y;
+        float rt1_maxY = corner1[2].y;
+
+        float rt2_minX = corner1[0].x;
+        float rt2_maxX = corner1[2].x;
+        float rt2_minY = corner1[0].y;
+        float rt2_maxY = corner1[2].y;
+
+        bool isOverlapping =
+            rt1_minX < rt2_minX &&
+            rt1_maxX > rt2_minX &&
+            rt1_minY < rt2_maxY &&
+            rt1_maxY > rt2_minY;
+
+        return isOverlapping;
     }
 }
