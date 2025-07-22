@@ -58,6 +58,9 @@ public class JoystickController : MonoBehaviour, IPointerDownHandler, IPointerUp
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        isDragging = false;
+        if (puzzleEx == null) return;
+
         if (IsRectOverlapping(puzzleEx.puzzleHoleRT, rectTransform))
         {
             
@@ -66,7 +69,6 @@ public class JoystickController : MonoBehaviour, IPointerDownHandler, IPointerUp
         {
 
         }
-        isDragging = false;
     }
 
     public bool IsRectOverlapping(RectTransform rt1, RectTransform rt2)

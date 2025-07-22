@@ -116,8 +116,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b50aae74b3f94ed478c704f44af3bcc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exPuzzles:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  exPuzzles: []
