@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7746872882189103453}
   - component: {fileID: 6727549913155265732}
   - component: {fileID: 3380405457823857805}
-  - component: {fileID: 1747135494826581948}
   m_Layer: 5
   m_Name: Puzzle_13
   m_TagString: Untagged
@@ -103,17 +102,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeb5046780030404ebf2babc544e7d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzleEx: {fileID: 0}
---- !u!114 &1747135494826581948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 677890805424308031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b50aae74b3f94ed478c704f44af3bcc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  exPuzzles: []
+  emptyPuzzle: {fileID: 0}

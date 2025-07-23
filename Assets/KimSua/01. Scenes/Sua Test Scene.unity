@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 123246360}
   - component: {fileID: 123246359}
   - component: {fileID: 123246361}
+  - component: {fileID: 123246362}
   m_Layer: 5
   m_Name: bgController
   m_TagString: Untagged
@@ -207,6 +208,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfa11bf05bbdaba45acf42deb09770d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &123246362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123246357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e5aac5cea2252f4b80e6c38a090266f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EmptyPuzzleT: {fileID: 123246358}
 --- !u!1 &380292512
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,6 +716,7 @@ GameObject:
   - component: {fileID: 1224488795}
   - component: {fileID: 1224488794}
   - component: {fileID: 1224488796}
+  - component: {fileID: 1224488797}
   m_Layer: 5
   m_Name: Examples
   m_TagString: Untagged
@@ -792,6 +807,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
+--- !u!114 &1224488797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224488792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b50aae74b3f94ed478c704f44af3bcc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1534140031
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,7 +1152,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   bgController: {fileID: 123246361}
-  puzzleHoleRT: {fileID: 0}
 --- !u!4 &1986572681
 Transform:
   m_ObjectHideFlags: 0

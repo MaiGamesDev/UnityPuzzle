@@ -14,11 +14,11 @@ public class JoystickController : MonoBehaviour, IPointerDownHandler, IPointerUp
     private RectTransform rectTransform;
     private Canvas canvas;
 
-    public PuzzleExample puzzleEx;
+    public EmptyPuzzleSlot emptyPuzzle;
 
     private void Awake()
     {
-        puzzleEx = GetComponent<PuzzleExample>();
+        emptyPuzzle = GetComponent<EmptyPuzzleSlot>();
         rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
     }
@@ -59,17 +59,16 @@ public class JoystickController : MonoBehaviour, IPointerDownHandler, IPointerUp
     public void OnPointerUp(PointerEventData eventData)
     {
         isDragging = false;
-        if (puzzleEx == null) return;
+        if (emptyPuzzle == null) return;
 
-        /* 오류로 잠시 주석처리 했습니다(수아)
-        if (IsRectOverlapping(puzzleEx.puzzleHoleRT, rectTransform))
-        {
+        //if (IsRectOverlapping(emptyPuzzle.EmptyPuzzleRT, rectTransform))
+        //{
             
-        }
-        else
-        {
+        //}
+        //else
+        //{
 
-        } */
+        //}
     }
 
     public bool IsRectOverlapping(RectTransform rt1, RectTransform rt2)
