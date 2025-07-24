@@ -1126,26 +1126,27 @@ MonoBehaviour:
   - {fileID: 8974384322428612750, guid: 072ebe036fa67b24785f2d92b30de846, type: 3}
   - {fileID: 2111500582673069918, guid: e9f572d5c87c570439b9824e9d50aadf, type: 3}
   puzzlePrefab:
-  - {fileID: 5819017889569782956, guid: 14dc9d9560c7ace4b80f3abf44f8beca, type: 3}
-  - {fileID: 6462715082435867306, guid: d9c6c160b068b454b9dfd1a9fdb8ee8f, type: 3}
-  - {fileID: 5374957318994796769, guid: 1bddfd7311500ba4883d63f2abebdfa4, type: 3}
-  - {fileID: 2909404462533571437, guid: 74766b3731312fe40b82ae84c5c3bc24, type: 3}
-  - {fileID: 5313163868618766158, guid: c1e10497a7cd2a446a007166f08a6aa3, type: 3}
-  - {fileID: 5558086427344190664, guid: 332cdc9c5a26fc84fa647b53ec592847, type: 3}
-  - {fileID: 5921394006436013577, guid: 3f6dffe3b89f2f845bcf223951f9dc68, type: 3}
-  - {fileID: 6571100553615263944, guid: a36cc0ff166c6154380f5f9e599cc074, type: 3}
-  - {fileID: 8953747651940706382, guid: 04a2287ac007e4c4a8f17880c72ce9d4, type: 3}
-  - {fileID: 4218045305187293037, guid: 8ffc4dba2796cb84f9695eec10a80640, type: 3}
-  - {fileID: 6423433427924063239, guid: b79ebb0cb2134b14dad21fef88d12b5e, type: 3}
-  - {fileID: 3685338618766419044, guid: 79edce8f56d7da243812d297757a937f, type: 3}
-  - {fileID: 677890805424308031, guid: 9109c176d75d68841a22dc489a0d9031, type: 3}
-  - {fileID: 5975084813101966905, guid: 5cbad25e5bef81544a067965277a0d5e, type: 3}
-  - {fileID: 7152847596583056510, guid: f205011dea461d14da81d83abfe7b122, type: 3}
+  - {fileID: 9032196308127876568, guid: 5964edac086260d45b939a99a3ce5568, type: 3}
+  - {fileID: 441795262774841441, guid: b8383a62f2fed6f428d47669931ff5f5, type: 3}
+  - {fileID: 3563164094513033922, guid: 023e2b664c66e8e4db1f53262984db5d, type: 3}
+  - {fileID: 5455153590485592586, guid: 6a0a5bbfe49355c41a6307ee0aaa8916, type: 3}
+  - {fileID: 2332303002826639763, guid: 104c7c26aa7fa194f84fd87a9911eff9, type: 3}
+  - {fileID: 2636722606274611640, guid: 9a627a35f5266514a96da44109e93fea, type: 3}
+  - {fileID: 809325958211377076, guid: 5386adc881cfbf84eb6cfbcf978a5d02, type: 3}
+  - {fileID: 5775930609780896631, guid: b6737f2e2c0b185419bc67f1f960de7c, type: 3}
+  - {fileID: 6791692971965263867, guid: 4d7bfe4e5cdb8fb42979bba655f734e8, type: 3}
+  - {fileID: 3762954402458076459, guid: 575073435d4621d4f802097b72c65c36, type: 3}
+  - {fileID: 8125153928144825904, guid: b4c1779cfd09e374799e322f0787f1a8, type: 3}
+  - {fileID: 7011129750940536325, guid: 24bd44c7aace0c74d86327d125d474b8, type: 3}
+  - {fileID: 2953660409005709429, guid: 2cf9bc9e31646084989325fa0ff6c7c1, type: 3}
+  - {fileID: 6142422751314217137, guid: bf6a228faf62e07449858325e6beb840, type: 3}
+  - {fileID: 2533108338480550825, guid: 0de0db98ee6cec0489fa7646c9a16a19, type: 3}
   puzzleParent: {fileID: 1224488793}
   correctIndex: 0
   wrongIndexs: 
   correctPos: {x: 0, y: 0}
   wrongPos: []
+  answerPos: {x: 0, y: 0}
   tiles:
   - {fileID: 0}
   - {fileID: 0}

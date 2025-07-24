@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PuzzleSelector : MonoBehaviour, IPointerClickHandler
+public class PuzzleSelector : MonoBehaviour, IPointerDownHandler
 {
     public int puzzleIndex;
     private TurnButtonController turnButton;
@@ -11,7 +11,7 @@ public class PuzzleSelector : MonoBehaviour, IPointerClickHandler
         turnButton = FindFirstObjectByType<TurnButtonController>();
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerDown(PointerEventData eventData)
     {
         turnButton.SelectTile(puzzleIndex);
     }

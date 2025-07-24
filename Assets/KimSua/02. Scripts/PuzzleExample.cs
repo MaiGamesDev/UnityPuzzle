@@ -18,14 +18,14 @@ public class PuzzleExample : MonoBehaviour
     float cellWidth;
     float cellHeight;
 
-    public int correctIndex;
-    public List<int> wrongIndexs = new List<int>();
+    [HideInInspector] public int correctIndex;
+    [HideInInspector] public List<int> wrongIndexs = new List<int>();
 
-    public Vector2Int correctPos;
-    public List<Vector2Int> wrongPos = new List<Vector2Int>();
+    [HideInInspector] public Vector2Int correctPos;
+    [HideInInspector] public List<Vector2Int> wrongPos = new List<Vector2Int>();
 
-    public Vector2Int answerPos;
-    private List<Vector2Int> selectedPos = new List<Vector2Int>();
+    [HideInInspector] public Vector2Int answerPos;
+    [HideInInspector] private List<Vector2Int> selectedPos = new List<Vector2Int>();
 
     public GameObject[] tiles = new GameObject[4];
 
