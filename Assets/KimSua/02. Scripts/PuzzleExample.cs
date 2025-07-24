@@ -27,7 +27,7 @@ public class PuzzleExample : MonoBehaviour
     [HideInInspector] public Vector2Int answerPos;
     [HideInInspector] private List<Vector2Int> selectedPos = new List<Vector2Int>();
 
-    public GameObject[] tiles = new GameObject[4];
+    [HideInInspector] public GameObject[] tiles = new GameObject[4];
 
     public BgImageController bgController;
 
