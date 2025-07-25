@@ -147,8 +147,8 @@ public class PuzzleExample : MonoBehaviour
             pzSelcect.puzzleIndex = i;
 
             // 랜덤 회전 적용
-            //float randomAngle = 90f * Random.Range(0, 4);
-            //puzzleObj.transform.rotation = Quaternion.Euler(0f, 0f, randomAngle);
+            float randomAngle = 90f * Random.Range(0, 4);
+            puzzleObj.transform.rotation = Quaternion.Euler(0f, 0f, randomAngle);
 
             AddBgImage(bgImage, puzzleObj.transform, posList[i]);
         }
@@ -183,13 +183,13 @@ public class PuzzleExample : MonoBehaviour
         puzzleImg.SetNativeSize();
         puzzleImg.raycastTarget = false;
 
-        // 퍼즐 조각을 정확한 위치에 배치 (bgController 기준)
+        // 퍼즐 조각을 배경 기준 정중앙에 배치
         RectTransform puzzleRect = puzzleImg.rectTransform;
         puzzleRect.anchorMin = new Vector2(0.5f, 0.5f);
         puzzleRect.anchorMax = new Vector2(0.5f, 0.5f);
         puzzleRect.pivot = new Vector2(0.5f, 0.5f);
 
-        // 그리드 위치를 anchoredPosition으로 변환
+        // 정중앙에서 퍼즐 위치 answerPos로 이동
         float posX = (gridPos.x * cellWidth) - (fullWidth / 2f) + (cellWidth / 2f);
         float posY = (gridPos.y * cellHeight) - (fullHeight / 2f) + (cellHeight / 2f);
         puzzleRect.anchoredPosition = new Vector2(posX, posY);
