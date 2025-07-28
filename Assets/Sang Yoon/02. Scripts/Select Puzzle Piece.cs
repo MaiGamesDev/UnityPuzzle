@@ -1,19 +1,15 @@
 using UnityEngine;
-using UnityEngine.UI;
-using System;
 
-public class TurnButtonController : MonoBehaviour
+class SelectPuzzlePiece : MonoBehaviour 
 {
     private PuzzleExample puzzleEx;
     public GameObject selectedTile;
+    public GameObject rTurnButton;
+    public GameObject lTurnButton;
 
+    public Vector3 puzzleRightTurn;
+    public Vector3 puzzleLeftTurn;
     private Vector3 defaultScale = Vector3.one;
-
-    private void Awake()
-    {
-        puzzleEx = FindFirstObjectByType<PuzzleExample>();
-    }
-
     public void SelectTile(int index)
     {
         if (index < 0 || puzzleEx.tiles == null)
@@ -29,21 +25,7 @@ public class TurnButtonController : MonoBehaviour
 
         // 선택 퍼즐 확대
         selectedTile.transform.localScale = defaultScale * 1.1f;
-    }
 
-    public void RotateLeft()
-    {
-        if (selectedTile == null)
-            return;
-
-        selectedTile.transform.Rotate(0, 0, 90f);
-    }
-
-    public void RotateRight()
-    {
-        if (selectedTile == null)
-            return;
-
-        selectedTile.transform.Rotate(0, 0, -90f);
+        Debug.Log($"타일{index} 선택됨. 회전 대기.");
     }
 }
