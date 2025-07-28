@@ -3,23 +3,30 @@ using UnityEngine;
 
 public class ExampleFourPuzzlesTransform : MonoBehaviour
 {
-    private Transform puzzleExParent;
+
+    public Transform puzzleExParent;
+    public RectTransform[] puzzleExRTs;
+    public Vector2[] originPos;
 
     IEnumerator Start()
     {
         yield return null;
 
-        puzzleExParent = this.transform;
-        RectTransform[] puzzleExChildren = puzzleExParent.GetComponentsInChildren<RectTransform>();
-        foreach (Transform child in puzzleExParent)
-        {
-            RectTransform rt = child.GetComponent<RectTransform>();
-            Debug.Log("퍼즐의 위치값 생성");
+        int puzzleCount = 4; // 퍼즐 조각 개수
+        puzzleExRTs = new RectTransform[puzzleCount];
+        originPos = new Vector2[puzzleCount];
 
-            if (rt != puzzleExParent.GetComponent<RectTransform>())
+        for (int i = 0; i < puzzleCount; i++)
+        {
+            puzzleExParent = this.transform.GetChild(i);
+            puzzleExRTs[i] = puzzleExParent.GetComponent<RectTransform>();
+
+            originPos[i] = puzzleExRTs[i].anchoredPosition;
+            //puzzleExRTs[i].sizeDelta = new Vector2(100, 100);
+
+            if (puzzleExRTs[i] != null)
             {
-                // anchoredPosition: UI에서 주로 쓰는 위치값
-                Debug.Log("퍼즐 위치(anchoredPosition): " + rt.anchoredPosition);
+                Debug.Log("퍼즐 위치(anchoredPosition): " + puzzleExRTs[i].anchoredPosition);
             }
         }
     }

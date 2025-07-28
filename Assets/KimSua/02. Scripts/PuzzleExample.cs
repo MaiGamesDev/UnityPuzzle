@@ -30,6 +30,7 @@ public class PuzzleExample : MonoBehaviour
     [HideInInspector] public GameObject[] tiles = new GameObject[4];
 
     public BgImageController bgController;
+    public GameObject bgRandom;
 
     // 시작할 때 사용할 단일 프리팹
     private GameObject selectedPuzzlePrefab;
@@ -44,12 +45,12 @@ public class PuzzleExample : MonoBehaviour
         // 시작할 때 퍼즐 프리팹 1개를 랜덤 선택
         int randomIndex = Random.Range(0, puzzlePrefab.Length);
         selectedPuzzlePrefab = puzzlePrefab[randomIndex];
-        GameObject bgRandom = bgImagePrefab[randomIndex];
+        bgRandom = bgImagePrefab[randomIndex];
 
         PuzzleOptions(bgRandom);
     }
 
-    void PuzzleOptions(GameObject bg)
+    public void PuzzleOptions(GameObject bg)
     {
         SelectRandomPos();
         ExPuzzleInst();
@@ -99,7 +100,7 @@ public class PuzzleExample : MonoBehaviour
         ClearPuzzles();
 
         // 랜덤 명화 1개 선택
-        GameObject bgRandom = bgImagePrefab[Random.Range(0, bgImagePrefab.Length)];
+        bgRandom = bgImagePrefab[Random.Range(0, bgImagePrefab.Length)];
 
         if (bgController != null)
             bgController.UpdateBg(bgRandom);
@@ -139,6 +140,10 @@ public class PuzzleExample : MonoBehaviour
             GameObject puzzleObj = Instantiate(puzzlePrefab, puzzleParent);
             Image puzzleImg = puzzleObj.GetComponent<Image>();
             puzzleImg.SetNativeSize();
+
+            JoystickController jsCtrl = puzzleObj.AddComponent<JoystickController>();
+            jsCtrl.puzzleIndex = i;
+            jsCtrl.puzzleExample = this;
 
             tiles[i] = puzzleObj;
 
