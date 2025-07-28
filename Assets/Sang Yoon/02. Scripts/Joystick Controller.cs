@@ -29,24 +29,19 @@ public class JoystickController : MonoBehaviour, IBeginDragHandler, IDragHandler
         startPosition = transform.position; // 드래그 시작 시 위치 저장
         startParent = transform.parent;     // 드래그 시작 시 부모 저장
 
-        // 💡 중요: 드롭 지점(PuzzleSlot)이 이벤트를 받으려면,
-        // 드래그하는 자신은 레이캐스트를 통과시켜야 합니다.
         canvasGroup.blocksRaycasts = false;
 
-        // 드래그하는 동안 가장 위에 보이도록 캔버스의 자식으로 잠시 옮깁니다.
         transform.SetParent(GetComponentInParent<Canvas>().transform);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        // 마우스/터치 위치로 조각을 옮깁니다.
-        // 스크린 좌표(eventData.position)를 그대로 사용하면 됩니다.
         transform.position = eventData.position;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (transform.parent == startParent || transform.parent.GetComponentInParent<Canvas>() != null) // 틀렸다면
+        if (transform.parent == startParent || transform.parent.GetComponentInParent<Canvas>() != null && puzzleIndex != puzzleExample.correctIndex) // 틀렸다면
         {
             transform.position = startPosition;
             transform.SetParent(startParent);
@@ -62,7 +57,7 @@ public class JoystickController : MonoBehaviour, IBeginDragHandler, IDragHandler
             else
             {
                 Debug.Log("오답입니다!");
-                // 원래 위치로 복귀 (드롭된 곳에서 실패 처리)
+                // 원래 위치로 복귀
                 transform.position = startPosition;
                 transform.SetParent(startParent);
             }
@@ -75,6 +70,8 @@ public class JoystickController : MonoBehaviour, IBeginDragHandler, IDragHandler
         puzzleExample.PuzzleOptions(puzzleExample.bgRandom);
     }
 }
+
+
 //using Unity.VisualScripting;
 //using UnityEditor;
 //using UnityEngine;

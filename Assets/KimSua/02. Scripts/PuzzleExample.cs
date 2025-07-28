@@ -137,19 +137,22 @@ public class PuzzleExample : MonoBehaviour
 
         for (int i = 0; i < posList.Count; i++)
         {
+
             GameObject puzzleObj = Instantiate(puzzlePrefab, puzzleParent);
             Image puzzleImg = puzzleObj.GetComponent<Image>();
             puzzleImg.SetNativeSize();
 
-            JoystickController jsCtrl = puzzleObj.AddComponent<JoystickController>();
-            jsCtrl.puzzleIndex = i;
-            jsCtrl.puzzleExample = this;
 
             tiles[i] = puzzleObj;
 
             // 퍼즐 클릭할 수 있도록 스크립트 추가
             PuzzleSelector pzSelcect = puzzleObj.AddComponent<PuzzleSelector>();
             pzSelcect.puzzleIndex = i;
+            
+            // 07-27추가
+            JoystickController dragCtrl = puzzleObj.AddComponent<JoystickController>();
+            dragCtrl.puzzleIndex = i;
+            dragCtrl.puzzleExample = this;
 
             // 랜덤 회전 적용
             float randomAngle = 90f * Random.Range(0, 4);
