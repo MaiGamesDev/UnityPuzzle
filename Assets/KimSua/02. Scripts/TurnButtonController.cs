@@ -1,49 +1,58 @@
 using UnityEngine;
-using UnityEngine.UI;
-using System;
 
 public class TurnButtonController : MonoBehaviour
 {
-    private PuzzleExample puzzleEx;
-    public GameObject selectedTile;
+    // public PuzzleController puzzleController;
+    public GameObject seletedTile;
+    public GameObject[] puzzles;
+    [SerializeField] private Transform puzzleParent;
 
-    private Vector3 defaultScale = Vector3.one;
+    private int selectedIndex = 0;
 
-    private void Awake()
+    void Start()
     {
-        puzzleEx = FindFirstObjectByType<PuzzleExample>();
+        SelectTile(0);
+        RandomPuzzle();
+    }
+
+    // �׽�Ʈ��
+    public void RandomPuzzle()
+    {
+        var randomIndex = Random.Range(0, puzzles.Length);
+        var randomX = Random.Range(0, 4);
+        var randomY = Random.Range(0, 2);
+        var createPos = new Vector3(randomX, randomY, 0);
+
+        var newTile = Instantiate(puzzles[randomIndex], puzzleParent);
+        Debug.Log($"������ ���� ����: {newTile.name}");
+
+        seletedTile = newTile;
     }
 
     public void SelectTile(int index)
     {
-        if (index < 0 || puzzleEx.tiles == null)
-            return;
+        //  seletedTile = puzzleController.candidateTiles[index]; // ���� 4������ �ε��� ������
 
-        // 이전 선택 퍼즐은 원래 크기로
-        foreach (GameObject tile in puzzleEx.tiles)
-        {
-            tile.transform.localScale = defaultScale;
-        }
 
-        selectedTile = puzzleEx.tiles[index];
-
-        // 선택 퍼즐 확대
-        selectedTile.transform.localScale = defaultScale * 1.1f;
+        // selectedIndex = index;
     }
 
     public void RotateLeft()
     {
-        if (selectedTile == null)
-            return;
-
-        selectedTile.transform.Rotate(0, 0, 90f);
+        if (seletedTile != null)
+        {
+            Debug.Log("Rotate Left");
+            seletedTile.transform.Rotate(0, 0, 90f); // �ݽð� ����
+        }
+            
     }
 
     public void RotateRight()
     {
-        if (selectedTile == null)
-            return;
-
-        selectedTile.transform.Rotate(0, 0, -90f);
+        if (seletedTile != null)
+        {
+            Debug.Log("Rotate Right");
+            seletedTile.transform.Rotate(0, 0, -90f); // �ð� ����
+        }            
     }
 }
