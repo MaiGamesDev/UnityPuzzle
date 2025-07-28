@@ -148,11 +148,11 @@ public class PuzzleExample : MonoBehaviour
             // 퍼즐 클릭할 수 있도록 스크립트 추가
             PuzzleSelector pzSelcect = puzzleObj.AddComponent<PuzzleSelector>();
             pzSelcect.puzzleIndex = i;
-            
-            // 07-27추가
-            JoystickController dragCtrl = puzzleObj.AddComponent<JoystickController>();
-            dragCtrl.puzzleIndex = i;
-            dragCtrl.puzzleExample = this;
+
+            //// 07-27추가
+            //JoystickController dragCtrl = puzzleObj.AddComponent<JoystickController>();
+            //dragCtrl.puzzleIndex = i;
+            //dragCtrl.puzzleExample = this;
 
             // 랜덤 회전 적용
             float randomAngle = 90f * Random.Range(0, 4);

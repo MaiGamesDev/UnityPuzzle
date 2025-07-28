@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e5aac5cea2252f4b80e6c38a090266f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emptyPuzzleRT: {fileID: 0}
+  correctPieceIndex: 0
 --- !u!114 &123246363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,6 +237,7 @@ MonoBehaviour:
   puzzleExample: {fileID: 0}
   puzzleIndex: 0
   pieceID: 
+  spacing: 50
 --- !u!1 &380292512
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,7 +758,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 298.99994}
+  m_AnchoredPosition: {x: 0, y: 300}
   m_SizeDelta: {x: 644.26, y: 179.47162}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1224488794
@@ -854,6 +855,7 @@ MonoBehaviour:
   puzzleExample: {fileID: 0}
   puzzleIndex: 0
   pieceID: 
+  spacing: 50
 --- !u!1 &1534140031
 GameObject:
   m_ObjectHideFlags: 0
