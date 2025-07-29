@@ -145,14 +145,18 @@ public class PuzzleExample : MonoBehaviour
 
             tiles[i] = puzzleObj;
 
+            puzzleObj.name = $"Puzzle_{i}";
+
+            // 드래그 정답 퍼즐 설정 (07-29 추가)
+            var drag = puzzleObj.GetComponent<JoystickController>()
+                       ?? puzzleObj.AddComponent<JoystickController>();
+            drag.puzzleIndex = i;      // 0~3 중 이 조각의 인덱스
+            drag.puzzleExample = this;
+
             // 퍼즐 클릭할 수 있도록 스크립트 추가
             PuzzleSelector pzSelcect = puzzleObj.AddComponent<PuzzleSelector>();
             pzSelcect.puzzleIndex = i;
 
-            //// 07-27추가
-            //JoystickController dragCtrl = puzzleObj.AddComponent<JoystickController>();
-            //dragCtrl.puzzleIndex = i;
-            //dragCtrl.puzzleExample = this;
 
             // 랜덤 회전 적용
             float randomAngle = 90f * Random.Range(0, 4);
@@ -185,11 +189,16 @@ public class PuzzleExample : MonoBehaviour
 
         // bgController의 자식으로 퍼즐 조각 생성
         GameObject puzzleObj = Instantiate(puzzlePrefab, bgController.transform, false);
+
+        // 빈 퍼즐 영역 (07-29 추가)
+        var dropZone = puzzleObj.AddComponent<PuzzleDropZone>();
+        dropZone.puzzleExample = this;
+
         puzzleObj.transform.rotation = Quaternion.identity;
 
         Image puzzleImg = puzzleObj.GetComponent<Image>();
         puzzleImg.SetNativeSize();
-        puzzleImg.raycastTarget = false;
+        puzzleImg.raycastTarget = true;
 
         // 퍼즐 조각을 배경 기준 정중앙에 배치
         RectTransform puzzleRect = puzzleImg.rectTransform;

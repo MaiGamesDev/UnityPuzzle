@@ -4,35 +4,29 @@ using UnityEngine.EventSystems;
 // 스크립트 이름을 PuzzlePiece로 바꾸는 것을 권장합니다.
 public class JoystickController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    private Vector3 startPosition ; // 원래 위치를 기억하기 위한 변수
-    private Transform startParent;   // 원래 부모를 기억하기 위한 변수
-    private CanvasGroup canvasGroup; // 드롭 이벤트를 위해 레이캐스트를 제어할 컴포넌트
+    private Vector3 startPosition;
+    private Transform startParent;
+    [HideInInspector] public CanvasGroup canvasGroup;
 
     public PuzzleExample puzzleExample;
-
     public int puzzleIndex;
-    public string pieceID;
-
-    public float spacing = 50f; // 
+    // ... (기타 필드)
 
     private void Awake()
     {
-        // CanvasGroup이 없으면 추가해 줍니다.
         canvasGroup = GetComponent<CanvasGroup>();
         if (canvasGroup == null)
-        {
             canvasGroup = gameObject.AddComponent<CanvasGroup>();
-        }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        startPosition = transform.position; // 드래그 시작 시 위치 저장
-        startParent = transform.parent;     // 드래그 시작 시 부모 저장
-
+        startPosition = transform.position;
+        startParent = transform.parent;
         canvasGroup.blocksRaycasts = false;
 
-        transform.SetParent(GetComponentInParent<Canvas>().transform);
+        // 최상위 Canvas로 옮겨서 드래그 중에 다른 UI 가리는 현상 방지
+        transform.SetParent(GetComponentInParent<Canvas>().transform, true);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -42,36 +36,24 @@ public class JoystickController : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (transform.parent == startParent || transform.parent.GetComponentInParent<Canvas>() != null) // 틀렸다면
+        // DropZone 쪽에서 OnDrop이 호출되면 그 안에서 ResetPosition 또는 다음 레벨 호출
+        // 혹시 DropZone 위가 아닌 빈 곳에 떨구면 되돌아가도록:
+        if (eventData.pointerEnter == null || eventData.pointerEnter.GetComponent<PuzzleDropZone>() == null)
         {
-            Debug.Log("오답입니다!");
-            transform.position = startPosition;
-            transform.SetParent(startParent);
+            ResetPosition();
+            canvasGroup.blocksRaycasts = true;
         }
-        else
-        {
-            // 드롭 성공인 경우 정답 확인
-            if (puzzleIndex == puzzleExample.correctIndex)
-            {
-                Debug.Log("정답입니다!");
-                NextLevel(); // 다음 레벨 전환
-            }
-            else
-            {
-                Debug.Log("오답입니다!");
-                // 원래 위치로 복귀
-                transform.position = startPosition;
-                transform.SetParent(startParent);
-            }
-        }
-        canvasGroup.blocksRaycasts = true;
+        // DropZone 위에 떨군 경우는 PuzzleDropZone.OnDrop 에서 rayscast 복구, 정답/오답 처리함
     }
 
-    public void NextLevel()
+    /// <summary>
+    /// 시작할 때 기록해 둔 위치와 부모로 되돌리는 함수
+    /// </summary>
+    public void ResetPosition()
     {
-        puzzleExample.PuzzleOptions(puzzleExample.bgRandom);
+        transform.SetParent(startParent, true);
+        transform.position = startPosition;
     }
-
 }
 
     //public bool IsRectOverlapping(RectTransform rt1, RectTransform rt2)
