@@ -132,7 +132,6 @@ GameObject:
   - component: {fileID: 66486078}
   - component: {fileID: 66486082}
   - component: {fileID: 66486081}
-  - component: {fileID: 66486080}
   m_Layer: 5
   m_Name: Art
   m_TagString: Untagged
@@ -197,22 +196,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 66486076}
   m_CullTransparentMesh: 1
---- !u!114 &66486080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 66486076}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eeb5046780030404ebf2babc544e7d70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzleExample: {fileID: 0}
-  puzzleIndex: 0
-  pieceID: 
-  spacing: 50
 --- !u!114 &66486081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e5aac5cea2252f4b80e6c38a090266f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emptyPuzzleRT: {fileID: 0}
+  correctPieceIndex: 0
 --- !u!114 &66486082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -897,7 +880,6 @@ GameObject:
   - component: {fileID: 1224488794}
   - component: {fileID: 1224488798}
   - component: {fileID: 1224488797}
-  - component: {fileID: 1224488796}
   m_Layer: 5
   m_Name: Examples
   m_TagString: Untagged
@@ -962,22 +944,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1224488792}
   m_CullTransparentMesh: 1
---- !u!114 &1224488796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1224488792}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eeb5046780030404ebf2babc544e7d70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzleExample: {fileID: 0}
-  puzzleIndex: 0
-  pieceID: 
-  spacing: 50
 --- !u!114 &1224488797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1873,6 +1839,7 @@ GameObject:
   - component: {fileID: 1526522630}
   - component: {fileID: 1526522633}
   - component: {fileID: 1526522631}
+  - component: {fileID: 1526522634}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -1924,6 +1891,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1526522629}
   m_CullTransparentMesh: 1
+--- !u!114 &1526522634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526522629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 858ad9cb832a9d24e9a718c2ad3a2a96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puzzleExample: {fileID: 0}
+  timer: {fileID: 1526522631}
+  plusTime: 6
+  minusTime: 3
 --- !u!1 &1534140031
 GameObject:
   m_ObjectHideFlags: 0
@@ -2646,6 +2629,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  holeParent: {fileID: 66486077}
+  pieceParent: {fileID: 1224488793}
   bgController: {fileID: 66486082}
   bgRandom: {fileID: 0}
 --- !u!4 &1986572681

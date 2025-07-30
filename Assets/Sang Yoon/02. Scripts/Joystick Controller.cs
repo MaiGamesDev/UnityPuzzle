@@ -10,7 +10,7 @@ public class JoystickController : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     public PuzzleExample puzzleExample;
     public int puzzleIndex;
-    // ... (기타 필드)
+
 
     private void Awake()
     {
@@ -25,7 +25,6 @@ public class JoystickController : MonoBehaviour, IBeginDragHandler, IDragHandler
         startParent = transform.parent;
         canvasGroup.blocksRaycasts = false;
 
-        // 최상위 Canvas로 옮겨서 드래그 중에 다른 UI 가리는 현상 방지
         transform.SetParent(GetComponentInParent<Canvas>().transform, true);
     }
 
@@ -36,18 +35,15 @@ public class JoystickController : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        // DropZone 쪽에서 OnDrop이 호출되면 그 안에서 ResetPosition 또는 다음 레벨 호출
-        // 혹시 DropZone 위가 아닌 빈 곳에 떨구면 되돌아가도록:
         if (eventData.pointerEnter == null || eventData.pointerEnter.GetComponent<PuzzleDropZone>() == null)
         {
             ResetPosition();
             canvasGroup.blocksRaycasts = true;
         }
-        // DropZone 위에 떨군 경우는 PuzzleDropZone.OnDrop 에서 rayscast 복구, 정답/오답 처리함
     }
 
     /// <summary>
-    /// 시작할 때 기록해 둔 위치와 부모로 되돌리는 함수
+    /// 시작할 때 기록해 둔 위치와 부모로 되돌리는 기능
     /// </summary>
     public void ResetPosition()
     {

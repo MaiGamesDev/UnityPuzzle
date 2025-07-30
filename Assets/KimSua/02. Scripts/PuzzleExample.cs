@@ -29,14 +29,17 @@ public class PuzzleExample : MonoBehaviour
 
     [HideInInspector] public GameObject[] tiles = new GameObject[4];
 
+    [SerializeField] private Transform holeParent;
+    [SerializeField] private Transform pieceParent;
+
     public BgImageController bgController;
     public GameObject bgRandom;
 
     // 시작할 때 사용할 단일 프리팹
     private GameObject selectedPuzzlePrefab;
 
-    // --------------------------------------------------------------------------------------------------------
 
+    // --------------------------------------------------------------------------------------------------------
     void Start()
     {
         cellWidth = fullWidth / gridX;
@@ -54,6 +57,8 @@ public class PuzzleExample : MonoBehaviour
     {
         SelectRandomPos();
         ExPuzzleInst();
+
+
     }
 
     // --------------------------------------------------------------------------------------------------------
@@ -226,5 +231,17 @@ public class PuzzleExample : MonoBehaviour
         float offsetY = (cellHeight * gridY - cellHeight) / 2f - (gridPos.y * cellHeight);
 
         rect.anchoredPosition = new Vector2(offsetX, offsetY);
+    }
+
+    public void DestroyChildren()
+    {
+        for (int i = holeParent.childCount - 1; i >= 0; i--)
+        {
+            Destroy(holeParent.GetChild(i).gameObject);
+        }
+        for (int i = pieceParent.childCount - 1; i >= 0; i--)
+        {
+            Destroy(pieceParent.GetChild(i).gameObject);
+        }
     }
 }

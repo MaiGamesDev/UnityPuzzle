@@ -4,6 +4,16 @@ using UnityEngine.EventSystems;
 public class PuzzleDropZone : MonoBehaviour, IDropHandler
 {
     public PuzzleExample puzzleExample;
+    public Timer timer;
+
+    public float plusTime = 6f;
+    public float minusTime = 3f;
+
+    void Awake()
+    {
+        if (timer == null)
+            timer = Object.FindFirstObjectByType<Timer>();
+    }
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -18,14 +28,30 @@ public class PuzzleDropZone : MonoBehaviour, IDropHandler
         // 올바른 인덱스인지 비교
         if (dropped.puzzleIndex == puzzleExample.correctIndex)
         {
-            Debug.Log("정답입니다!");
-            // 다음 레벨로
+            Destroy(dropped.gameObject);
+            puzzleExample.DestroyChildren();
+            // 다음 레벨
             puzzleExample.PuzzleOptions(puzzleExample.bgRandom);
+
+
+            //if (timer.time > 15)
+            //{
+            //    Debug.Log("6초추가");
+            //    timer.time = 15;
+            //}
+            //else
+            //{
+            //    Debug.Log("6초추가");
+            //    timer.time = timer.time + plusTime;
+            //}
+
         }
         else
         {
-            Debug.Log("오답입니다!");
+            Debug.Log("3초 감소");
+
             dropped.ResetPosition();
+            //timer.time = timer.time - minusTime;
         }
     }
 }

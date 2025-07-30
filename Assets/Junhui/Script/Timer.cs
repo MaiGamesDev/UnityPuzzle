@@ -17,7 +17,7 @@ public class Timer : MonoBehaviour
     private void Start()
     {
         currTime = time;
-        StartTimer(12f);
+        StartTimer(15f);
     }
 
     private void Update()
@@ -45,13 +45,14 @@ public class Timer : MonoBehaviour
         SetTimer();
     }
 
-    void StartTimer(float value)
+    public void StartTimer(float value)
     {
         isTimeout = false;
         time = value;
         currTime = time;
         SetTimer();
     }
+
     void TimeEnd()
     {
         manager.Gameover();

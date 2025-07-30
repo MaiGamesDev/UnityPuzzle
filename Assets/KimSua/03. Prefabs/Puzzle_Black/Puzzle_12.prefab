@@ -102,3 +102,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeb5046780030404ebf2babc544e7d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 0}
+  puzzleExample: {fileID: 0}
+  puzzleIndex: 0
