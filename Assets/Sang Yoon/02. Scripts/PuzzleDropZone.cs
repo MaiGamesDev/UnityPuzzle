@@ -13,6 +13,7 @@ public class PuzzleDropZone : MonoBehaviour, IDropHandler
     {
         if (timer == null)
             timer = Object.FindFirstObjectByType<Timer>();
+
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -21,17 +22,23 @@ public class PuzzleDropZone : MonoBehaviour, IDropHandler
         var dropped = eventData.pointerDrag?.GetComponent<JoystickController>();
         if (dropped == null)
             return;
+        // 제시된 4개의 퍼즐 Z축 회전값을 가지고 오기위함
+        float pieceZ = dropped.GetComponent<RectTransform>().localEulerAngles.z;
 
         // 레이캐스트 블록 복구
         dropped.canvasGroup.blocksRaycasts = true;
 
+        bool indexCor = dropped.puzzleIndex == puzzleExample.correctIndex;
+        bool rotationCor = pieceZ == 0;
+
         // 올바른 인덱스인지 비교
-        if (dropped.puzzleIndex == puzzleExample.correctIndex)
+        if (indexCor && rotationCor)
         {
             Destroy(dropped.gameObject);
             puzzleExample.DestroyChildren();
             // 다음 레벨
-            puzzleExample.PuzzleOptions(puzzleExample.bgRandom);
+            puzzleExample.PuzzleReset();
+
 
 
             //if (timer.time > 15)

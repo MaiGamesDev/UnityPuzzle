@@ -1880,7 +1880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e3e0948077be8f4ea8996d6b63d34e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 30
+  time: 1000
   timeLeft: {fileID: 1493321837}
   manager: {fileID: 1344114749}
 --- !u!222 &1526522633
@@ -2633,6 +2633,7 @@ MonoBehaviour:
   pieceParent: {fileID: 1224488793}
   bgController: {fileID: 66486082}
   bgRandom: {fileID: 0}
+  randomIndex: 0
 --- !u!4 &1986572681
 Transform:
   m_ObjectHideFlags: 0

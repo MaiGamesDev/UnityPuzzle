@@ -38,6 +38,8 @@ public class PuzzleExample : MonoBehaviour
     // 시작할 때 사용할 단일 프리팹
     private GameObject selectedPuzzlePrefab;
 
+    public int randomIndex;
+
 
     // --------------------------------------------------------------------------------------------------------
     void Start()
@@ -46,19 +48,22 @@ public class PuzzleExample : MonoBehaviour
         cellHeight = fullHeight / gridY;
 
         // 시작할 때 퍼즐 프리팹 1개를 랜덤 선택
-        int randomIndex = Random.Range(0, puzzlePrefab.Length);
+        randomIndex = Random.Range(0, puzzlePrefab.Length);
         selectedPuzzlePrefab = puzzlePrefab[randomIndex];
         bgRandom = bgImagePrefab[randomIndex];
 
         PuzzleOptions(bgRandom);
     }
 
+    private void Update()
+    {
+        
+    }
+
     public void PuzzleOptions(GameObject bg)
     {
         SelectRandomPos();
         ExPuzzleInst();
-
-
     }
 
     // --------------------------------------------------------------------------------------------------------
@@ -142,11 +147,9 @@ public class PuzzleExample : MonoBehaviour
 
         for (int i = 0; i < posList.Count; i++)
         {
-
             GameObject puzzleObj = Instantiate(puzzlePrefab, puzzleParent);
             Image puzzleImg = puzzleObj.GetComponent<Image>();
             puzzleImg.SetNativeSize();
-
 
             tiles[i] = puzzleObj;
 
@@ -243,5 +246,14 @@ public class PuzzleExample : MonoBehaviour
         {
             Destroy(pieceParent.GetChild(i).gameObject);
         }
+    }
+
+    public void PuzzleReset()
+    {
+        randomIndex = Random.Range(0, puzzlePrefab.Length);
+        selectedPuzzlePrefab = puzzlePrefab[randomIndex];
+        bgRandom = bgImagePrefab[randomIndex];
+
+        PuzzleOptions(bgRandom);
     }
 }
