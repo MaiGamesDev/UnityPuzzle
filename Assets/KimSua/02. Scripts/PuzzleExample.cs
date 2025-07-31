@@ -55,11 +55,6 @@ public class PuzzleExample : MonoBehaviour
         PuzzleOptions(bgRandom);
     }
 
-    private void Update()
-    {
-        
-    }
-
     public void PuzzleOptions(GameObject bg)
     {
         SelectRandomPos();
