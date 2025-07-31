@@ -34,6 +34,9 @@ public class PuzzleDropZone : MonoBehaviour, IDropHandler
         // 올바른 인덱스인지 비교
         if (indexCor && rotationCor)
         {
+            // 성공 사운드 재생
+            SoundManager.Instance.PlaySuccess();
+
             Destroy(dropped.gameObject);
             puzzleExample.DestroyChildren();
             // 다음 레벨
@@ -55,6 +58,9 @@ public class PuzzleDropZone : MonoBehaviour, IDropHandler
         }
         else
         {
+            // 실패 사운드 재생
+            SoundManager.Instance.PlayFail();
+
             Debug.Log("3초 감소");
 
             dropped.ResetPosition();

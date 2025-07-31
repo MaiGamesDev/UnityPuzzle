@@ -29,6 +29,8 @@ public class SoundManager : MonoBehaviour
 
     public AudioSource audioSource;
     public AudioClip audioMain;
+    public AudioClip audioSuccess;
+    public AudioClip audioFail;
 
     private void Start()
     {
@@ -48,5 +50,15 @@ public class SoundManager : MonoBehaviour
         audioSource.loop = true;
         audioSource.clip = clip;
         audioSource.Play();
+    }
+    public void PlaySuccess()
+    {
+        // 사운드 재생
+        audioSource.PlayOneShot(audioSuccess);
+    }
+    public void PlayFail()
+    {
+        // 사운드 재생
+        audioSource.PlayOneShot(audioFail);
     }
 }
