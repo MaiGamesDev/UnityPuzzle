@@ -83,6 +83,7 @@ public class PuzzleExample : MonoBehaviour
         selectedPos = posSet.ToList();
 
         correctIndex = Random.Range(0, selectedPos.Count);
+        Debug.Log($"정답 인덱스 위치!!!!!{correctIndex}");
         answerPos = selectedPos[correctIndex];
     }
 
@@ -162,7 +163,7 @@ public class PuzzleExample : MonoBehaviour
 
 
             // 랜덤 회전 적용
-            float randomAngle = 90f * Random.Range(0, 4);
+            int randomAngle = 90 * Random.Range(0, 4);
             puzzleObj.transform.rotation = Quaternion.Euler(0f, 0f, randomAngle);
 
             AddBgImage(bgImage, puzzleObj.transform, posList[i]);
@@ -188,10 +189,12 @@ public class PuzzleExample : MonoBehaviour
     /// </summary>
     void CreatePuzzleHole(GameObject puzzlePrefab, Vector2Int gridPos, GameObject bgImage)
     {
+
         if (puzzlePrefab == null || bgController == null) return;
 
         // bgController의 자식으로 퍼즐 조각 생성
-        GameObject puzzleObj = Instantiate(puzzlePrefab, bgController.transform, false);
+        GameObject puzzleObj = Instantiate(puzzlePrefab, holeParent, false); ///////////////////////////////
+        Debug.Log($"빈 퍼즐 위치{puzzleObj}");
 
         // 빈 퍼즐 영역 (07-29 추가)
         var dropZone = puzzleObj.AddComponent<PuzzleDropZone>();

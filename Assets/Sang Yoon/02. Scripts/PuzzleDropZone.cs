@@ -28,12 +28,13 @@ public class PuzzleDropZone : MonoBehaviour, IDropHandler
         // 레이캐스트 블록 복구
         dropped.canvasGroup.blocksRaycasts = true;
 
-        bool indexCor = dropped.puzzleIndex == puzzleExample.correctIndex;
-        bool rotationCor = pieceZ == 0;
+        bool isIndexCor = dropped.puzzleIndex == puzzleExample.correctIndex;
+        bool isRotationCor = pieceZ == 0;
 
         // 올바른 인덱스인지 비교
-        if (indexCor && rotationCor)
+        if (isIndexCor && isRotationCor)
         {
+            Debug.Log("조건 검사 완료!!!!!!!!!!!!!!!!!");
             // 성공 사운드 재생
             SoundManager.Instance.PlaySuccess();
 
@@ -43,7 +44,7 @@ public class PuzzleDropZone : MonoBehaviour, IDropHandler
             puzzleExample.PuzzleReset();
 
 
-
+            // 시간 구현중
             //if (timer.time > 15)
             //{
             //    Debug.Log("6초추가");
