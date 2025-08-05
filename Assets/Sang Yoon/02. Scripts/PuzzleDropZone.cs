@@ -4,17 +4,6 @@ using UnityEngine.EventSystems;
 public class PuzzleDropZone : MonoBehaviour, IDropHandler
 {
     public PuzzleExample puzzleExample;
-    public Timer timer;
-
-    public float plusTime = 6f;
-    public float minusTime = 3f;
-
-    void Awake()
-    {
-        if (timer == null)
-            timer = Object.FindFirstObjectByType<Timer>();
-
-    }
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -29,12 +18,12 @@ public class PuzzleDropZone : MonoBehaviour, IDropHandler
         dropped.canvasGroup.blocksRaycasts = true;
 
         bool isIndexCor = dropped.puzzleIndex == puzzleExample.correctIndex;
-        bool isRotationCor = pieceZ == 0;
+        bool isRotationCor = pieceZ >= -0.01 && pieceZ <= 0.01;
+
 
         // 올바른 인덱스인지 비교
         if (isIndexCor && isRotationCor)
         {
-            Debug.Log("조건 검사 완료!!!!!!!!!!!!!!!!!");
             // 성공 사운드 재생
             SoundManager.Instance.PlaySuccess();
 
@@ -42,27 +31,11 @@ public class PuzzleDropZone : MonoBehaviour, IDropHandler
             puzzleExample.DestroyChildren();
             // 다음 레벨
             puzzleExample.PuzzleReset();
-
-
-            // 시간 구현중
-            //if (timer.time > 15)
-            //{
-            //    Debug.Log("6초추가");
-            //    timer.time = 15;
-            //}
-            //else
-            //{
-            //    Debug.Log("6초추가");
-            //    timer.time = timer.time + plusTime;
-            //}
-
         }
         else
         {
             // 실패 사운드 재생
             SoundManager.Instance.PlayFail();
-
-            Debug.Log("3초 감소");
 
             dropped.ResetPosition();
             //timer.time = timer.time - minusTime;

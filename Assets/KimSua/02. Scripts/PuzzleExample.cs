@@ -83,7 +83,7 @@ public class PuzzleExample : MonoBehaviour
         selectedPos = posSet.ToList();
 
         correctIndex = Random.Range(0, selectedPos.Count);
-        Debug.Log($"정답 인덱스 위치!!!!!{correctIndex}");
+
         answerPos = selectedPos[correctIndex];
     }
 
@@ -114,7 +114,6 @@ public class PuzzleExample : MonoBehaviour
 
         // 정답 인덱스와 위치 설정
         correctPos = answerPos;
-        Debug.Log($"정답 인덱스 : {correctIndex}, 정답 위치 : {correctPos}");
 
         // 오답 설정
         wrongIndexs.Clear();
@@ -122,8 +121,6 @@ public class PuzzleExample : MonoBehaviour
         {
             if (i != correctIndex) wrongIndexs.Add(i);
         }
-
-        Debug.Log($"오답 인덱스 : {string.Join(", ", wrongIndexs)}");
 
         wrongPos = new List<Vector2Int>(selectedPos);
         wrongPos.RemoveAt(correctIndex);
@@ -161,7 +158,6 @@ public class PuzzleExample : MonoBehaviour
             PuzzleSelector pzSelcect = puzzleObj.AddComponent<PuzzleSelector>();
             pzSelcect.puzzleIndex = i;
 
-
             // 랜덤 회전 적용
             int randomAngle = 90 * Random.Range(0, 4);
             puzzleObj.transform.rotation = Quaternion.Euler(0f, 0f, randomAngle);
@@ -193,8 +189,8 @@ public class PuzzleExample : MonoBehaviour
         if (puzzlePrefab == null || bgController == null) return;
 
         // bgController의 자식으로 퍼즐 조각 생성
-        GameObject puzzleObj = Instantiate(puzzlePrefab, holeParent, false); ///////////////////////////////
-        Debug.Log($"빈 퍼즐 위치{puzzleObj}");
+        GameObject puzzleObj = Instantiate(puzzlePrefab, holeParent, false);
+        
 
         // 빈 퍼즐 영역 (07-29 추가)
         var dropZone = puzzleObj.AddComponent<PuzzleDropZone>();

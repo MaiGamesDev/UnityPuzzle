@@ -17,7 +17,7 @@ public class Timer : MonoBehaviour
     private void Start()
     {
         currTime = time;
-        StartTimer(1000f);
+        StartTimer(15f);
     }
 
     private void Update()
