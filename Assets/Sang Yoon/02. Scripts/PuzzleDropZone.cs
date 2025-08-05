@@ -4,6 +4,16 @@ using UnityEngine.EventSystems;
 public class PuzzleDropZone : MonoBehaviour, IDropHandler
 {
     public PuzzleExample puzzleExample;
+    public ScoreManager scoreManager;
+    public Timer timer;
+
+    void Awake()
+    {
+        if (timer == null)
+            timer = Object.FindFirstObjectByType<Timer>();
+
+        scoreManager = GetComponent<ScoreManager>();
+    }
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -31,6 +41,9 @@ public class PuzzleDropZone : MonoBehaviour, IDropHandler
             puzzleExample.DestroyChildren();
             // 다음 레벨
             puzzleExample.PuzzleReset();
+
+            ScoreManager.instance.AddScore(1);
+            timer.StartTimer(15f);
         }
         else
         {
@@ -38,7 +51,6 @@ public class PuzzleDropZone : MonoBehaviour, IDropHandler
             SoundManager.Instance.PlayFail();
 
             dropped.ResetPosition();
-            //timer.time = timer.time - minusTime;
         }
     }
 }

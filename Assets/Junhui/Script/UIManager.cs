@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,8 @@ public class UIManager : MonoBehaviour
 
     public AudioClip audioGameStart;
     public AudioClip audioGameOver;
+
+    [SerializeField] private TextMeshProUGUI scoreText;
 
     private bool isStart = false;
 
@@ -45,6 +48,7 @@ public class UIManager : MonoBehaviour
     {
         SoundManager.Instance.PlaySound(audioGameOver);
         ResetCanvas();
+        scoreText.text = ScoreManager.instance.totalScore.ToString();
         gameOverCanvas.SetActive(true);
     }
 
