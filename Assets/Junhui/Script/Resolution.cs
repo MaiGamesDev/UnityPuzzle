@@ -13,10 +13,10 @@ public class Resolution : MonoBehaviour
         w = canvas.GetComponent<RectTransform>().rect.width;
         h = canvas.GetComponent<RectTransform>().rect.height;
         multiple = new Vector2(w/720, h/1280);
-        if (0.45 < (w / h) && (w / h) < 0.65)
-            return;
         if (forceY )
             GetComponent<RectTransform>().anchoredPosition *= new Vector2(1, multiple.y);
+        if (0.45 < (w / h) && (w / h) < 0.65)
+            return;
         else
             GetComponent<RectTransform>().anchoredPosition *= multiple.x >= multiple.y ? new Vector2(multiple.x, 1) : new Vector2(1, multiple.y);
     }

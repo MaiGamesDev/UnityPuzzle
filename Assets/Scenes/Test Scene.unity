@@ -671,7 +671,6 @@ GameObject:
   - component: {fileID: 757413490}
   - component: {fileID: 757413489}
   - component: {fileID: 757413492}
-  - component: {fileID: 757413493}
   m_Layer: 5
   m_Name: RightTurnButton
   m_TagString: Untagged
@@ -694,9 +693,9 @@ RectTransform:
   - {fileID: 1465820595}
   m_Father: {fileID: 1933321699}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -104, y: 113}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 256, y: -527}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &757413489
@@ -806,19 +805,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioPressed: {fileID: 8300000, guid: 8dc7de44bf5cba4469dba80c0d8e0116, type: 3}
---- !u!114 &757413493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 757413487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 731cb8d5c21c6bd46998629d770e3023, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  forceY: 0
 --- !u!1 &824106051
 GameObject:
   m_ObjectHideFlags: 0
@@ -1756,7 +1742,6 @@ GameObject:
   - component: {fileID: 1458363934}
   - component: {fileID: 1458363933}
   - component: {fileID: 1458363936}
-  - component: {fileID: 1458363937}
   m_Layer: 5
   m_Name: LeftTurnButton
   m_TagString: Untagged
@@ -1779,9 +1764,9 @@ RectTransform:
   - {fileID: 1780702341}
   m_Father: {fileID: 1933321699}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 104, y: 113}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -256, y: -527}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1458363933
@@ -1891,19 +1876,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioPressed: {fileID: 8300000, guid: 8dc7de44bf5cba4469dba80c0d8e0116, type: 3}
---- !u!114 &1458363937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1458363931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 731cb8d5c21c6bd46998629d770e3023, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  forceY: 0
 --- !u!1 &1465820594
 GameObject:
   m_ObjectHideFlags: 0
