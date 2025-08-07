@@ -6,7 +6,6 @@ public class TurnButtonController : MonoBehaviour
 {
     private PuzzleExample puzzleEx;
     public GameObject selectedTile;
-    public AudioClip audioButton;
     public AudioClip audioPuzzle;
 
     private Vector3 defaultScale = Vector3.one;
@@ -41,9 +40,6 @@ public class TurnButtonController : MonoBehaviour
         if (selectedTile == null)
             return;
 
-        // 버튼 사운드 재생
-        SoundManager.Instance.PlaySound(audioButton);
-
         selectedTile.transform.Rotate(0, 0, 90f);
     }
 
@@ -51,10 +47,7 @@ public class TurnButtonController : MonoBehaviour
     {
         if (selectedTile == null)
             return;
-
-        // 퍼즐 사운드 재생
-        SoundManager.Instance.PlaySound(audioButton);
-
+    
         selectedTile.transform.Rotate(0, 0, -90f);
     }
 }

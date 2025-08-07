@@ -671,6 +671,7 @@ GameObject:
   - component: {fileID: 757413490}
   - component: {fileID: 757413489}
   - component: {fileID: 757413492}
+  - component: {fileID: 757413493}
   m_Layer: 5
   m_Name: RightTurnButton
   m_TagString: Untagged
@@ -805,6 +806,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioPressed: {fileID: 8300000, guid: 8dc7de44bf5cba4469dba80c0d8e0116, type: 3}
+--- !u!111 &757413493
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757413487}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 58a5e1f4425d88546b5ab5bc2714c6c4, type: 2}
+  - {fileID: 7400000, guid: 2d159325c0b5a0c4ea8c0a7afcd30581, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
 --- !u!1 &824106051
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,7 +1089,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -7443756053782179069, guid: 0553f49635b2e854ca0025cc6ce9a2af, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0553f49635b2e854ca0025cc6ce9a2af, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1742,6 +1761,7 @@ GameObject:
   - component: {fileID: 1458363934}
   - component: {fileID: 1458363933}
   - component: {fileID: 1458363936}
+  - component: {fileID: 1458363937}
   m_Layer: 5
   m_Name: LeftTurnButton
   m_TagString: Untagged
@@ -1876,6 +1896,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioPressed: {fileID: 8300000, guid: 8dc7de44bf5cba4469dba80c0d8e0116, type: 3}
+--- !u!111 &1458363937
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458363931}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 58a5e1f4425d88546b5ab5bc2714c6c4, type: 2}
+  - {fileID: 7400000, guid: 2d159325c0b5a0c4ea8c0a7afcd30581, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
 --- !u!1 &1465820594
 GameObject:
   m_ObjectHideFlags: 0
@@ -2148,7 +2186,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedTile: {fileID: 0}
-  audioButton: {fileID: 8300000, guid: 8dc7de44bf5cba4469dba80c0d8e0116, type: 3}
   audioPuzzle: {fileID: 8300000, guid: 1a9b1772e8eb892419ed446bb54ad127, type: 3}
 --- !u!1 &1720376606
 GameObject:
