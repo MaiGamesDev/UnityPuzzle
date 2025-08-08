@@ -16,7 +16,7 @@ public class ServerImageLoad : MonoBehaviour
 
     IEnumerator TextureLoad()
     {
-        string url = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FbnejLS%2FbtsPJ28POVs%2FAAAAAAAAAAAAAAAAAAAAAP8Wr4-kuEP3Qbfz057-DDTgl3LdELW0lJrv38GEF0Sv%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1756652399%26allow_ip%3D%26allow_referer%3D%26signature%3DTCfE1iEld2NcUCo9L6IoEwcXPM0%253D";
+        string url = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FdfV9Cx%2FbtsPKUXZccE%2FAAAAAAAAAAAAAAAAAAAAALSCb-7naXxmA5qwdm6_KETo3FB-a84NMg9_z5QgGf_G%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1756652399%26allow_ip%3D%26allow_referer%3D%26signature%3Dqc0T%252BhhfdTU1U3F8p3Ju5hYcAbg%253D";
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
 
         yield return www.SendWebRequest();
