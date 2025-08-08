@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 // 스크립트 이름을 PuzzlePiece로 바꾸는 것을 권장합니다.
 public class JoystickController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    private Vector3 startPosition;
+    public Vector2 startPosition;
     private Transform startParent;
     [HideInInspector] public CanvasGroup canvasGroup;
 
