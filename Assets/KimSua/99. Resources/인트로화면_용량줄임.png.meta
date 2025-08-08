@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4fc42f6690c1812498e10ac1a892673e
+guid: a2337d536dc53424ab54ddd2f56ae58d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2117662624658032675
-    second: Kiss_0
+      213: -7856788834537819671
+    second: "\uC778\uD2B8\uB85C\uD654\uBA74_\uC6A9\uB7C9\uC904\uC784_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -72,10 +72,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -109,17 +109,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Kiss_0
+      name: "\uC778\uD2B8\uB85C\uD654\uBA74_\uC6A9\uB7C9\uC904\uC784_0"
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 599
-        height: 600
+        width: 720
+        height: 1280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3280dd0ffe2736d10800000000000000
-      internalID: 2117662624658032675
+      spriteID: 9e13e1a9e2417f290800000000000000
+      internalID: -7856788834537819671
       vertices: []
       indices: 
       edges: []
@@ -138,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Kiss_0: 2117662624658032675
+      "\uC778\uD2B8\uB85C\uD654\uBA74_\uC6A9\uB7C9\uC904\uC784_0": -7856788834537819671
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
