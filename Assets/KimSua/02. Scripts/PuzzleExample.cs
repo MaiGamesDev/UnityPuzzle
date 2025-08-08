@@ -105,9 +105,6 @@ public class PuzzleExample : MonoBehaviour
     {
         ClearPuzzles();
 
-        // 랜덤 명화 1개 선택
-        bgRandom = bgImagePrefab[Random.Range(0, bgImagePrefab.Length)];
-
         if (bgController != null)
             bgController.UpdateBg(bgRandom);
 
@@ -185,12 +182,13 @@ public class PuzzleExample : MonoBehaviour
     /// </summary>
     void CreatePuzzleHole(GameObject puzzlePrefab, Vector2Int gridPos, GameObject bgImage)
     {
-
         if (puzzlePrefab == null || bgController == null) return;
 
         // bgController의 자식으로 퍼즐 조각 생성
         GameObject puzzleObj = Instantiate(puzzlePrefab, holeParent, false);
-        
+
+        var drag = puzzleObj.GetComponent<JoystickController>();
+        drag.isDraggable = false;
 
         // 빈 퍼즐 영역 (07-29 추가)
         var dropZone = puzzleObj.AddComponent<PuzzleDropZone>();

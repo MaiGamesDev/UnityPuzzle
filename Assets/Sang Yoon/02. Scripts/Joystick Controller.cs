@@ -12,6 +12,7 @@ public class JoystickController : MonoBehaviour, IBeginDragHandler, IDragHandler
     public PuzzleExample puzzleExample;
     public int puzzleIndex;
 
+    public bool isDraggable = true; // 드래그 가능 여부 추가(25-08-08)
 
     private void Awake()
     {
@@ -22,6 +23,8 @@ public class JoystickController : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (!isDraggable) return;
+
         startPosition = transform.position;
         startParent = transform.parent;
         canvasGroup.blocksRaycasts = false;
@@ -31,16 +34,21 @@ public class JoystickController : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (!isDraggable) return;
+
         transform.position = eventData.position;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (!isDraggable) return;
+
         if (eventData.pointerEnter == null || eventData.pointerEnter.GetComponent<PuzzleDropZone>() == null)
         {
             ResetPosition();
-            canvasGroup.blocksRaycasts = true;
         }
+
+        canvasGroup.blocksRaycasts = true;
     }
 
     /// <summary>
