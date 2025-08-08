@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public class PuzzleDropZone : MonoBehaviour, IDropHandler
 {
@@ -50,7 +51,10 @@ public class PuzzleDropZone : MonoBehaviour, IDropHandler
             // 실패 사운드 재생
             SoundManager.Instance.PlayFail();
 
+            //rt.DOAnchorPos(joystickController.startPosition, 1);//-----------------
+
             dropped.ResetPosition();
         }
+
     }
 }
