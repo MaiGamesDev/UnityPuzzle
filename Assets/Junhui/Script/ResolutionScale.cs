@@ -12,7 +12,7 @@ public class ResolutionScale : MonoBehaviour
         w = canvas.GetComponent<RectTransform>().rect.width;
         h = canvas.GetComponent<RectTransform>().rect.height;
         multiple = new Vector2(w/720, h/1280);
-
-        transform.localScale *= multiple.x;
+        if (w < h) transform.localScale *= multiple.x;
+        else transform.localScale *= multiple.y;
     }
 }
