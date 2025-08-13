@@ -6,7 +6,10 @@ using DG.Tweening;
 public class JoystickController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public Vector2 startPosition;
+    public Vector2 endPosition;
     private Transform startParent;
+    private RectTransform rt;
+
     [HideInInspector] public CanvasGroup canvasGroup;
 
     public PuzzleExample puzzleExample;
@@ -16,20 +19,23 @@ public class JoystickController : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     private void Awake()
     {
-        canvasGroup = GetComponent<CanvasGroup>();
         if (canvasGroup == null)
             canvasGroup = gameObject.AddComponent<CanvasGroup>();
+
+        canvasGroup = GetComponent<CanvasGroup>();
+        puzzleExample = GetComponent<PuzzleExample>();
+        rt = GetComponent<RectTransform>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (!isDraggable) return;
 
-        startPosition = transform.position;
+        startPosition = rt.anchoredPosition;
         startParent = transform.parent;
         canvasGroup.blocksRaycasts = false;
 
-        transform.SetParent(GetComponentInParent<Canvas>().transform, true);
+        //transform.SetParent(GetComponentInParent<Canvas>().transform, true);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -41,13 +47,17 @@ public class JoystickController : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (!isDraggable) return;
+        endPosition = rt.anchoredPosition;
+
+        if (!isDraggable)
+        {
+            return;
+        }
 
         if (eventData.pointerEnter == null || eventData.pointerEnter.GetComponent<PuzzleDropZone>() == null)
         {
             ResetPosition();
         }
-
         canvasGroup.blocksRaycasts = true;
     }
 
@@ -56,7 +66,7 @@ public class JoystickController : MonoBehaviour, IBeginDragHandler, IDragHandler
     /// </summary>
     public void ResetPosition()
     {
+        rt.DOAnchorPos(startPosition, 0.5f); // DOTween기능을 이용해서 틀렸을 때 되돌아 가는 애니메이션 구현
         transform.SetParent(startParent, true);
-        transform.position = startPosition;
     }
 }

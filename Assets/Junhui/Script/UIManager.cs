@@ -17,13 +17,13 @@ public class UIManager : MonoBehaviour
 
 
     /// <summary>
-    /// Å¬¸¯½Ã ÀÌÆåÆ® »ý¼º
+    /// Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     public GameObject effectCanvas;
     public Sprite[] effectSprites;
     public float animSpeed = 0.1f;
     public Vector2 effectSize = new Vector2(300, 300);
-    private bool touchProcessed= false; // ÅÍÄ¡ Ã³¸®
+    private bool touchProcessed= false; // ï¿½ï¿½Ä¡ Ã³ï¿½ï¿½
 
     private bool isStart = false;
 
@@ -39,13 +39,13 @@ public class UIManager : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
 
-            // ÅÍÄ¡ ½ÃÀÛÇÒ ¶§¸¸ ÀÌÆåÆ® »ý¼º
+            // ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
             if (touch.phase == TouchPhase.Began && !touchProcessed)
             {
                 touchProcessed = true;
                 ScreenTouched(touch.position);
             }
-            // ÅÍÄ¡°¡ ³¡³ª¸é ¸®¼Â
+            // ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
             {
                 touchProcessed = false;
@@ -72,32 +72,32 @@ public class UIManager : MonoBehaviour
 
     IEnumerator CreateEffect(Vector2 screenPos)
     {
-        // UI ÀÌ¹ÌÁö »ý¼º
+        // UI ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         GameObject effect = new GameObject("TouchEffect");
         effect.transform.SetParent(effectCanvas.transform);
 
         Image img = effect.AddComponent<Image>();
         RectTransform rect = effect.GetComponent<RectTransform>();
 
-        // ½ºÅ©¸° ÁÂÇ¥¸¦ Äµ¹ö½º ÁÂÇ¥·Î º¯È¯
+        // ï¿½ï¿½Å©ï¿½ï¿½ ï¿½ï¿½Ç¥ï¿½ï¿½ Äµï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½È¯
         Vector2 localPos;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             effectCanvas.GetComponent<RectTransform>(),
             screenPos, null, out localPos);
         rect.localPosition = localPos;
 
-        // Å©±â ¼³Á¤
+        // Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         rect.sizeDelta = effectSize;
         img.raycastTarget = false;
 
-        // ¾Ö´Ï¸ÞÀÌ¼Ç Àç»ý
+        // ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½
         for (int i = 0; i < effectSprites.Length; i++)
         {
             img.sprite = effectSprites[i];
             yield return new WaitForSeconds(animSpeed);
         }
 
-        // »èÁ¦
+        // ï¿½ï¿½ï¿½ï¿½
         Destroy(effect);
     }
 

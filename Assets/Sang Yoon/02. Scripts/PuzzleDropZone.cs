@@ -8,12 +8,21 @@ public class PuzzleDropZone : MonoBehaviour, IDropHandler
     public ScoreManager scoreManager;
     public Timer timer;
 
+    private JoystickController joystickController;
+    private ExampleFourPuzzlesTransform exampleFourPuzzlesTransform;
+
+    private RectTransform rt;
+
     void Awake()
     {
         if (timer == null)
             timer = Object.FindFirstObjectByType<Timer>();
 
         scoreManager = GetComponent<ScoreManager>();
+        exampleFourPuzzlesTransform = GetComponent<ExampleFourPuzzlesTransform>();
+        joystickController = GetComponent<JoystickController>();
+
+        rt = GetComponent<RectTransform>();
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -51,10 +60,7 @@ public class PuzzleDropZone : MonoBehaviour, IDropHandler
             // 실패 사운드 재생
             SoundManager.Instance.PlayFail();
 
-            //rt.DOAnchorPos(joystickController.startPosition, 1);//-----------------
-
             dropped.ResetPosition();
         }
-
     }
 }
