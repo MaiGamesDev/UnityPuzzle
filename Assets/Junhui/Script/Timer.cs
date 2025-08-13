@@ -28,6 +28,13 @@ public class Timer : MonoBehaviour
     void SetTimer()
     {
         timeLeft.fillAmount = currTime / time;
+        if (currTime < 5f) timeLeft.color = Color.red;
+        else
+        {
+            Color color;
+            ColorUtility.TryParseHtmlString("#FFB8FF", out color);
+            timeLeft.color = color;
+        }
     }
 
     void TimePass()
