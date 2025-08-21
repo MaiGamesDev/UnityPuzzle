@@ -1,13 +1,19 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Android.Gradle;
+using Unity.Burst.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PuzzleExample : MonoBehaviour
 {
+    #region 멤버변수
     public GameObject[] bgImagePrefab; // 명화 프리팹
     public GameObject[] puzzlePrefab; // 퍼즐 프리팹
     [SerializeField] private Transform puzzleParent; // 보기 4개 배치할 부모
+    [SerializeField] private Transform outlineParent;
 
     private int gridX = 5;
     private int gridY = 3;
@@ -39,9 +45,8 @@ public class PuzzleExample : MonoBehaviour
     private GameObject selectedPuzzlePrefab;
 
     public int randomIndex;
+    #endregion
 
-
-    // --------------------------------------------------------------------------------------------------------
     void Start()
     {
         cellWidth = fullWidth / gridX;
@@ -61,7 +66,7 @@ public class PuzzleExample : MonoBehaviour
         ExPuzzleInst();
     }
 
-    // --------------------------------------------------------------------------------------------------------
+    #region 기본 좌표, 보기 퍼즐, 정답 위치 생성
 
     /// <summary>
     ///  퍼즐 조각 배치될 랜덤 4개 위치(좌표) 선택
@@ -210,8 +215,6 @@ public class PuzzleExample : MonoBehaviour
         float posX = (gridPos.x * cellWidth) - (fullWidth / 2f) + (cellWidth / 2f);
         float posY = (gridPos.y * cellHeight) - (fullHeight / 2f) + (cellHeight / 2f);
         puzzleRect.anchoredPosition = new Vector2(posX, posY);
-
-        // AddBgImage(bgImage, puzzleObj.transform, gridPos);
     }
 
     void SetRectTransform(RectTransform rect, Vector2 gridPos, float fullW, float fullH)
@@ -227,7 +230,9 @@ public class PuzzleExample : MonoBehaviour
 
         rect.anchoredPosition = new Vector2(offsetX, offsetY);
     }
+    #endregion
 
+    #region 퍼즐 삭제
     public void DestroyChildren()
     {
         for (int i = holeParent.childCount - 1; i >= 0; i--)
@@ -248,4 +253,125 @@ public class PuzzleExample : MonoBehaviour
 
         PuzzleOptions(bgRandom);
     }
+    #endregion
+
+
+    #region 아웃라인 추가
+    private List<GameObject> outlinePuzzles = new List<GameObject>(); // 아웃라인 퍼즐들 관리용
+    private List<int> hintIndexs = new List<int>(); // 아웃라인 퍼즐들 관리용
+    private bool isBlinking = false;
+    float outlineThickness = 6f;
+
+    public void ShowHint()
+    {
+        ClearOutlines();
+        BuildHintIndexs();
+
+        foreach (int idx in hintIndexs)
+        {
+            if (idx < 0 || idx >= tiles.Length) continue;
+            if (tiles[idx] == null) continue;
+
+            var outline = CreateOutlinePuzzle(idx);
+            if (outline != null) outlinePuzzles.Add(outline);
+        }
+    }
+
+    void BuildHintIndexs()
+    {
+        hintIndexs.Clear();
+
+        hintIndexs.Add(correctIndex);
+
+        // 오답 2개 뽑기 (중복x)
+        var pool = new List<int>(wrongIndexs);
+        for (int i = 0; i < 2 && pool.Count > 0; i++)
+        {
+            int r = Random.Range(0, pool.Count);
+            hintIndexs.Add(pool[r]);
+            pool.RemoveAt(r);
+        }
+    }
+
+    GameObject CreateOutlinePuzzle(int tileIndex)
+    {
+        Transform main = tiles[tileIndex].transform;
+
+        GameObject outlinePuzzle = Instantiate(selectedPuzzlePrefab, outlineParent);
+        outlinePuzzle.name = main.name + "_Outline";
+
+        var mainRect = (RectTransform)main;
+        var outlineRect = (RectTransform)outlinePuzzle.transform;
+
+        outlineRect.anchorMin = mainRect.anchorMin;
+        outlineRect.anchorMax = mainRect.anchorMax;
+        outlineRect.pivot = mainRect.pivot;
+
+        // 초기 위치 World Position 설정
+        outlineRect.position = mainRect.position;
+        outlineRect.rotation = mainRect.rotation;
+        outlineRect.localScale = mainRect.localScale;
+
+        // 아웃라인 두께 설정(부모 scale이 변해도 동일한 두께이도록 전역scale 사용)
+        float tx = outlineThickness / mainRect.lossyScale.x;
+        float ty = outlineThickness / mainRect.lossyScale.y;
+        outlineRect.sizeDelta = mainRect.sizeDelta + new Vector2(tx * 3f, ty * 3f);
+
+        Image outlineImg = outlinePuzzle.GetComponent<Image>();
+        outlineImg.raycastTarget = false;
+        outlineImg.color = new Color(14 / 255f, 255 / 255f, 185 / 255f);
+
+        // OutlineFollower 추가
+        var follower = outlinePuzzle.AddComponent<OutlineFollower>();
+        follower.target = main;
+
+        return outlinePuzzle;
+    }
+
+
+    public void StartBlinking()
+    {
+        if (!isBlinking)
+        {
+            StartCoroutine(BlinkingRoutine());
+        }
+    }
+
+    IEnumerator BlinkingRoutine()
+    {
+        isBlinking = true;
+        float blinkSpeed = 6f; // 깜빡거리는 속도
+        bool visible = true;
+
+        while (isBlinking)
+        {
+            foreach (var outline in outlinePuzzles)
+            {
+                if (outline != null)
+                    outline.SetActive(visible);
+            }
+
+            visible = !visible;
+            yield return new WaitForSeconds(1f / blinkSpeed);
+        }
+    }
+
+    public void ClearOutlines()
+    {
+        foreach (GameObject outline in outlinePuzzles)
+        {
+            if (outline != null)
+            {
+                Destroy(outline);
+            }
+        }
+        outlinePuzzles.Clear();
+    }
+
+    public void ResetBlinking()
+    {
+        isBlinking = false;
+        ClearOutlines();
+    }
+    #endregion
 }

@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using TMPro;
 using UnityEngine;
@@ -13,6 +15,9 @@ public class Timer : MonoBehaviour
 
     public Image timeLeft;
     public UIManager manager;
+
+    [SerializeField] private PuzzleExample puzzleEx;
+    private bool hintTrigger = false;
 
     private void Start()
     {
@@ -50,6 +55,18 @@ public class Timer : MonoBehaviour
         }
         currTime -= Time.deltaTime;
         SetTimer();
+
+        if (!hintTrigger && currTime <= 5f)
+        {
+            hintTrigger = true;
+            puzzleEx.ShowHint();
+            puzzleEx.StartBlinking();
+        }
+
+        if (hintTrigger && currTime <= 4.5f)
+        {
+            puzzleEx.ClearOutlines();
+        }
     }
 
     public void StartTimer(float value)
@@ -58,6 +75,8 @@ public class Timer : MonoBehaviour
         time = value;
         currTime = time;
         SetTimer();
+
+        hintTrigger = false;
     }
 
     void TimeEnd()
