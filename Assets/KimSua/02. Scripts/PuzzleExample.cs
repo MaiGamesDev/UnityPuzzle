@@ -251,6 +251,7 @@ public class PuzzleExample : MonoBehaviour
     {
         ClearPuzzles();
         DestroyChildren();
+        ResetBlinking();
 
         bgRanIndex = Random.Range(0, bgImagePrefab.Length);
         bgRandom = bgImagePrefab[bgRanIndex];
