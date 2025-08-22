@@ -38,13 +38,14 @@ public class PuzzleExample : MonoBehaviour
     [SerializeField] private Transform holeParent;
     [SerializeField] private Transform pieceParent;
 
-    public BgImageController bgController;
+    [SerializeField] private BgImageController bgController;
     public GameObject bgRandom;
 
     // 시작할 때 사용할 단일 프리팹
     private GameObject selectedPuzzlePrefab;
 
-    public int randomIndex;
+    private int bgRanIndex;
+    private int puzzleRanIndex;
     #endregion
 
     void Start()
@@ -52,10 +53,11 @@ public class PuzzleExample : MonoBehaviour
         cellWidth = fullWidth / gridX;
         cellHeight = fullHeight / gridY;
 
-        // 시작할 때 퍼즐 프리팹 1개를 랜덤 선택
-        randomIndex = Random.Range(0, puzzlePrefab.Length);
-        selectedPuzzlePrefab = puzzlePrefab[randomIndex];
-        bgRandom = bgImagePrefab[randomIndex];
+        bgRanIndex = Random.Range(0, bgImagePrefab.Length);
+        bgRandom = bgImagePrefab[bgRanIndex];
+
+        puzzleRanIndex = Random.Range(0, puzzlePrefab.Length);
+        selectedPuzzlePrefab = puzzlePrefab[puzzleRanIndex];
 
         PuzzleOptions(bgRandom);
     }
@@ -97,9 +99,9 @@ public class PuzzleExample : MonoBehaviour
     /// </summary>
     void ClearPuzzles()
     {
-        foreach (Transform child in puzzleParent)
+        for (int i = puzzleParent.childCount - 1; i >= 0; i--)
         {
-            Destroy(child.gameObject);
+            Destroy(puzzleParent.GetChild(i).gameObject);
         }
     }
 
@@ -247,9 +249,14 @@ public class PuzzleExample : MonoBehaviour
 
     public void PuzzleReset()
     {
-        randomIndex = Random.Range(0, puzzlePrefab.Length);
-        selectedPuzzlePrefab = puzzlePrefab[randomIndex];
-        bgRandom = bgImagePrefab[randomIndex];
+        ClearPuzzles();
+        DestroyChildren();
+
+        bgRanIndex = Random.Range(0, bgImagePrefab.Length);
+        bgRandom = bgImagePrefab[bgRanIndex];
+
+        puzzleRanIndex = Random.Range(0, puzzlePrefab.Length);
+        selectedPuzzlePrefab = puzzlePrefab[puzzleRanIndex];
 
         PuzzleOptions(bgRandom);
     }
@@ -358,12 +365,9 @@ public class PuzzleExample : MonoBehaviour
 
     public void ClearOutlines()
     {
-        foreach (GameObject outline in outlinePuzzles)
+        for (int i = outlineParent.childCount - 1; i >= 0; i--)
         {
-            if (outline != null)
-            {
-                Destroy(outline);
-            }
+            Destroy(outlineParent.GetChild(i).gameObject);
         }
         outlinePuzzles.Clear();
     }

@@ -9,7 +9,7 @@ public class PuzzleDropZone : MonoBehaviour, IDropHandler
     public Timer timer;
 
     private JoystickController joystickController;
-    private ExampleFourPuzzlesTransform exampleFourPuzzlesTransform;
+    // private ExampleFourPuzzlesTransform exampleFourPuzzlesTransform;
 
     private RectTransform rt;
 
@@ -19,7 +19,7 @@ public class PuzzleDropZone : MonoBehaviour, IDropHandler
             timer = Object.FindFirstObjectByType<Timer>();
 
         scoreManager = GetComponent<ScoreManager>();
-        exampleFourPuzzlesTransform = GetComponent<ExampleFourPuzzlesTransform>();
+        // exampleFourPuzzlesTransform = GetComponent<ExampleFourPuzzlesTransform>();
         joystickController = GetComponent<JoystickController>();
 
         rt = GetComponent<RectTransform>();

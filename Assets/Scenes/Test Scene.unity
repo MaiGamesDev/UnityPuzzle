@@ -971,7 +971,6 @@ GameObject:
   - component: {fileID: 824106055}
   - component: {fileID: 824106054}
   - component: {fileID: 824106053}
-  - component: {fileID: 824106056}
   m_Layer: 0
   m_Name: Background Canvas
   m_TagString: Untagged
@@ -1062,18 +1061,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &824106056
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 824106051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df28f7d134774d141bc77beb67faa64a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &851010422
 GameObject:
   m_ObjectHideFlags: 0
@@ -1299,6 +1286,7 @@ GameObject:
   - component: {fileID: 1224488795}
   - component: {fileID: 1224488794}
   - component: {fileID: 1224488797}
+  - component: {fileID: 1224488798}
   m_Layer: 5
   m_Name: Examples
   m_TagString: Untagged
@@ -1380,6 +1368,81 @@ MonoBehaviour:
   puzzleExParent: {fileID: 0}
   puzzleExRTs: []
   originPos: []
+--- !u!114 &1224488798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224488792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1abce4fca8808d4499ad5ad4d7dbfc69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgImagePrefab:
+  - {fileID: 6378429158267747649, guid: 1eb10d354e222c44fa5c830e8a461e7a, type: 3}
+  - {fileID: 4121400698210159660, guid: 7d63ce4197dd86d4f8847db4ff315e68, type: 3}
+  - {fileID: 6312215259584690485, guid: 9542b00df4008a643af8cc8301a76270, type: 3}
+  - {fileID: 6761763549185012456, guid: c9e108be8fce1ef4e9286635bc060912, type: 3}
+  - {fileID: 4602726141992864466, guid: 40004d5d29c370442a259cf9dd4f591c, type: 3}
+  - {fileID: 4511130403349020851, guid: b9ba9404afe035e4e8af0f14fdf4cede, type: 3}
+  - {fileID: 3773214243838933706, guid: c1ce1ed09e209cf4f950bbc97cf5ef98, type: 3}
+  - {fileID: 4157311420708118046, guid: cf1243972684f244294aef631f3eda27, type: 3}
+  - {fileID: 1479049715327843503, guid: c848468270497bf46a79c25ed38a3553, type: 3}
+  - {fileID: 4891289490296736557, guid: 809574eeb95c6f441b9c2fcddd5365b1, type: 3}
+  - {fileID: 7467998725453147874, guid: 63ded0c10b01f2140af9fc5df98fada4, type: 3}
+  - {fileID: 3950730192178491233, guid: cea726841e04d314c9e4545013735a1d, type: 3}
+  - {fileID: 8170870258477112917, guid: a1b9baccdb2c5944dbf152fd5a1559a5, type: 3}
+  - {fileID: 4405444826803062584, guid: 5029c9a15c5ce7c408e3f5261d481243, type: 3}
+  - {fileID: 8362265159225520316, guid: 8797fe5d43c198c44ba3c3d10fe1f80f, type: 3}
+  - {fileID: 4756098870129219664, guid: 3faa8500ade0ce0469e201474018aeb7, type: 3}
+  - {fileID: 5874171964499612114, guid: 4cff9b113f4fb3c468c9aed9ccacb908, type: 3}
+  - {fileID: 6307534975940998376, guid: 1e83b1f081eac364ba23846ca2126f10, type: 3}
+  - {fileID: 6491830934586003387, guid: 81a1ef19fabd7bd4081db15e15b9bf38, type: 3}
+  - {fileID: 3469826292169436465, guid: 3e81ad14d1534e24da032efa82b48cbf, type: 3}
+  - {fileID: 5389125772039058152, guid: 026a60b26fbde584eab6d3f99bda4cd2, type: 3}
+  - {fileID: 5920525460786152931, guid: 91f111388126c064f999c5f6e6bfa763, type: 3}
+  - {fileID: 3897944410121809520, guid: f170ad63d81d4eb43a5b7ea792b94238, type: 3}
+  - {fileID: 373125589939632353, guid: ac4dd7941cbbff34db456926278dd106, type: 3}
+  - {fileID: 8299935161054019689, guid: fce9a3fea070f804794e7eff2c110c83, type: 3}
+  - {fileID: 4883458244675472544, guid: 8c071f580493b3a448298fa3b4a4fb0e, type: 3}
+  - {fileID: 6822598163451518754, guid: d38891a7bb96c794594ce8c763fc2180, type: 3}
+  - {fileID: 2965181801402400383, guid: 9b8da85820c75764eba34f96e5da683e, type: 3}
+  - {fileID: 8974384322428612750, guid: 072ebe036fa67b24785f2d92b30de846, type: 3}
+  - {fileID: 2111500582673069918, guid: e9f572d5c87c570439b9824e9d50aadf, type: 3}
+  puzzlePrefab:
+  - {fileID: 9032196308127876568, guid: 5964edac086260d45b939a99a3ce5568, type: 3}
+  - {fileID: 441795262774841441, guid: b8383a62f2fed6f428d47669931ff5f5, type: 3}
+  - {fileID: 3563164094513033922, guid: 023e2b664c66e8e4db1f53262984db5d, type: 3}
+  - {fileID: 5455153590485592586, guid: 6a0a5bbfe49355c41a6307ee0aaa8916, type: 3}
+  - {fileID: 2332303002826639763, guid: 104c7c26aa7fa194f84fd87a9911eff9, type: 3}
+  - {fileID: 2636722606274611640, guid: 9a627a35f5266514a96da44109e93fea, type: 3}
+  - {fileID: 809325958211377076, guid: 5386adc881cfbf84eb6cfbcf978a5d02, type: 3}
+  - {fileID: 5775930609780896631, guid: b6737f2e2c0b185419bc67f1f960de7c, type: 3}
+  - {fileID: 6791692971965263867, guid: 4d7bfe4e5cdb8fb42979bba655f734e8, type: 3}
+  - {fileID: 3762954402458076459, guid: 575073435d4621d4f802097b72c65c36, type: 3}
+  - {fileID: 8125153928144825904, guid: b4c1779cfd09e374799e322f0787f1a8, type: 3}
+  - {fileID: 7011129750940536325, guid: 24bd44c7aace0c74d86327d125d474b8, type: 3}
+  - {fileID: 2953660409005709429, guid: 2cf9bc9e31646084989325fa0ff6c7c1, type: 3}
+  - {fileID: 6142422751314217137, guid: bf6a228faf62e07449858325e6beb840, type: 3}
+  - {fileID: 2533108338480550825, guid: 0de0db98ee6cec0489fa7646c9a16a19, type: 3}
+  puzzleParent: {fileID: 785793972}
+  outlineParent: {fileID: 408418698}
+  correctIndex: 0
+  wrongIndexs: 
+  correctPos: {x: 0, y: 0}
+  wrongPos: []
+  answerPos: {x: 0, y: 0}
+  tiles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  holeParent: {fileID: 66486077}
+  pieceParent: {fileID: 785793972}
+  bgController: {fileID: 66486082}
+  bgRandom: {fileID: 0}
 --- !u!1 &1243008649
 GameObject:
   m_ObjectHideFlags: 0
@@ -2144,7 +2207,7 @@ MonoBehaviour:
   time: 15
   timeLeft: {fileID: 1493321837}
   manager: {fileID: 1344114749}
-  puzzleEx: {fileID: 1986572680}
+  puzzleEx: {fileID: 1224488798}
 --- !u!222 &1526522633
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2880,114 +2943,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &1986572679
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1986572681}
-  - component: {fileID: 1986572680}
-  m_Layer: 0
-  m_Name: Puzzle Example
-  m_TagString: Untagged
-  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1986572680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1986572679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1abce4fca8808d4499ad5ad4d7dbfc69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bgImagePrefab:
-  - {fileID: 6378429158267747649, guid: 1eb10d354e222c44fa5c830e8a461e7a, type: 3}
-  - {fileID: 4121400698210159660, guid: 7d63ce4197dd86d4f8847db4ff315e68, type: 3}
-  - {fileID: 6312215259584690485, guid: 9542b00df4008a643af8cc8301a76270, type: 3}
-  - {fileID: 6761763549185012456, guid: c9e108be8fce1ef4e9286635bc060912, type: 3}
-  - {fileID: 4602726141992864466, guid: 40004d5d29c370442a259cf9dd4f591c, type: 3}
-  - {fileID: 4511130403349020851, guid: b9ba9404afe035e4e8af0f14fdf4cede, type: 3}
-  - {fileID: 3773214243838933706, guid: c1ce1ed09e209cf4f950bbc97cf5ef98, type: 3}
-  - {fileID: 4157311420708118046, guid: cf1243972684f244294aef631f3eda27, type: 3}
-  - {fileID: 1479049715327843503, guid: c848468270497bf46a79c25ed38a3553, type: 3}
-  - {fileID: 4891289490296736557, guid: 809574eeb95c6f441b9c2fcddd5365b1, type: 3}
-  - {fileID: 7467998725453147874, guid: 63ded0c10b01f2140af9fc5df98fada4, type: 3}
-  - {fileID: 3950730192178491233, guid: cea726841e04d314c9e4545013735a1d, type: 3}
-  - {fileID: 8170870258477112917, guid: a1b9baccdb2c5944dbf152fd5a1559a5, type: 3}
-  - {fileID: 4405444826803062584, guid: 5029c9a15c5ce7c408e3f5261d481243, type: 3}
-  - {fileID: 8362265159225520316, guid: 8797fe5d43c198c44ba3c3d10fe1f80f, type: 3}
-  - {fileID: 4756098870129219664, guid: 3faa8500ade0ce0469e201474018aeb7, type: 3}
-  - {fileID: 5874171964499612114, guid: 4cff9b113f4fb3c468c9aed9ccacb908, type: 3}
-  - {fileID: 6307534975940998376, guid: 1e83b1f081eac364ba23846ca2126f10, type: 3}
-  - {fileID: 6491830934586003387, guid: 81a1ef19fabd7bd4081db15e15b9bf38, type: 3}
-  - {fileID: 3469826292169436465, guid: 3e81ad14d1534e24da032efa82b48cbf, type: 3}
-  - {fileID: 5389125772039058152, guid: 026a60b26fbde584eab6d3f99bda4cd2, type: 3}
-  - {fileID: 5920525460786152931, guid: 91f111388126c064f999c5f6e6bfa763, type: 3}
-  - {fileID: 3897944410121809520, guid: f170ad63d81d4eb43a5b7ea792b94238, type: 3}
-  - {fileID: 373125589939632353, guid: ac4dd7941cbbff34db456926278dd106, type: 3}
-  - {fileID: 8299935161054019689, guid: fce9a3fea070f804794e7eff2c110c83, type: 3}
-  - {fileID: 4883458244675472544, guid: 8c071f580493b3a448298fa3b4a4fb0e, type: 3}
-  - {fileID: 6822598163451518754, guid: d38891a7bb96c794594ce8c763fc2180, type: 3}
-  - {fileID: 2965181801402400383, guid: 9b8da85820c75764eba34f96e5da683e, type: 3}
-  - {fileID: 8974384322428612750, guid: 072ebe036fa67b24785f2d92b30de846, type: 3}
-  - {fileID: 2111500582673069918, guid: e9f572d5c87c570439b9824e9d50aadf, type: 3}
-  puzzlePrefab:
-  - {fileID: 9032196308127876568, guid: 5964edac086260d45b939a99a3ce5568, type: 3}
-  - {fileID: 441795262774841441, guid: b8383a62f2fed6f428d47669931ff5f5, type: 3}
-  - {fileID: 3563164094513033922, guid: 023e2b664c66e8e4db1f53262984db5d, type: 3}
-  - {fileID: 5455153590485592586, guid: 6a0a5bbfe49355c41a6307ee0aaa8916, type: 3}
-  - {fileID: 2332303002826639763, guid: 104c7c26aa7fa194f84fd87a9911eff9, type: 3}
-  - {fileID: 2636722606274611640, guid: 9a627a35f5266514a96da44109e93fea, type: 3}
-  - {fileID: 809325958211377076, guid: 5386adc881cfbf84eb6cfbcf978a5d02, type: 3}
-  - {fileID: 5775930609780896631, guid: b6737f2e2c0b185419bc67f1f960de7c, type: 3}
-  - {fileID: 6791692971965263867, guid: 4d7bfe4e5cdb8fb42979bba655f734e8, type: 3}
-  - {fileID: 3762954402458076459, guid: 575073435d4621d4f802097b72c65c36, type: 3}
-  - {fileID: 8125153928144825904, guid: b4c1779cfd09e374799e322f0787f1a8, type: 3}
-  - {fileID: 7011129750940536325, guid: 24bd44c7aace0c74d86327d125d474b8, type: 3}
-  - {fileID: 2953660409005709429, guid: 2cf9bc9e31646084989325fa0ff6c7c1, type: 3}
-  - {fileID: 6142422751314217137, guid: bf6a228faf62e07449858325e6beb840, type: 3}
-  - {fileID: 2533108338480550825, guid: 0de0db98ee6cec0489fa7646c9a16a19, type: 3}
-  puzzleParent: {fileID: 785793972}
-  outlineParent: {fileID: 408418698}
-  correctIndex: 0
-  wrongIndexs: 
-  correctPos: {x: 0, y: 0}
-  wrongPos: []
-  answerPos: {x: 0, y: 0}
-  tiles:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  holeParent: {fileID: 66486077}
-  pieceParent: {fileID: 1224488793}
-  bgController: {fileID: 66486082}
-  bgRandom: {fileID: 0}
-  randomIndex: 0
---- !u!4 &1986572681
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1986572679}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1996985020
 GameObject:
   m_ObjectHideFlags: 0
@@ -3371,7 +3326,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1732393689}
   - {fileID: 1534140033}
-  - {fileID: 1986572681}
   - {fileID: 596857398}
   - {fileID: 1344114748}
   - {fileID: 1326435802}

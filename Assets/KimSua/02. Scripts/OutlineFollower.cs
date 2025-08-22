@@ -23,9 +23,5 @@ public class OutlineFollower : MonoBehaviour
             rect.position = targetRect.position;
             rect.rotation = targetRect.rotation;
         }
-        else
-        {
-            Destroy(gameObject);
-        }
     }
 }
