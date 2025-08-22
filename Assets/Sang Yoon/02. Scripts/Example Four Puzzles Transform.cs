@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class ExampleFourPuzzlesTransform : MonoBehaviour
 {
-
     public Transform puzzleExParent;
     public RectTransform[] puzzleExRTs;
     public Vector2[] originPos;
